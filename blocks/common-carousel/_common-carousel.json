@@ -1,30 +1,30 @@
 {
   "definitions": [
     {
-      "title": "Future Building",
-      "id": "future-building",
+      "title": "Common Carousel",
+      "id": "common-carousel",
       "plugins": {
         "xwalk": {
           "page": {
             "resourceType": "core/franklin/components/block/v1/block",
             "template": {
-              "name": "Future Building",
-              "filter": "future-building"
+              "name": "Common Carousel",
+              "filter": "common-carousel"
             }
           }
         }
       }
     },
     {
-      "title": "Future Building Item",
-      "id": "future-building-item",
+      "title": "Common Carousel Item",
+      "id": "common-carousel-item",
       "plugins": {
         "xwalk": {
           "page": {
             "resourceType": "core/franklin/components/block/v1/block/item",
             "template": {
-              "name": "Future Building Item",
-              "model": "future-building-item"
+              "name": "Common Carousel Item",
+              "model": "common-carousel-item"
             }
           }
         }
@@ -33,7 +33,7 @@
   ],
   "models": [
     {
-      "id": "future-building-item",
+      "id": "common-carousel-item",
       "fields": [
         {
           "component": "reference",
@@ -48,15 +48,22 @@
           "value": "",
           "label": "Text",
           "valueType": "string"
+        },
+        {
+          "component": "richtext",
+          "name": "description",
+          "value": "",
+          "label": "Description",
+          "valueType": "string"
         }
       ]
     }
   ],
   "filters": [
     {
-      "id": "future-building",
+      "id": "common-carousel",
       "components": [
-        "future-building-item"
+        "common-carousel-item"
       ]
     }
   ]

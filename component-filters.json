@@ -18,11 +18,14 @@
       "fragment",
       "accordion",
       "carousel",
-      "future-building",
+      "common-carousel",
+      "embed",
+      "form",
       "quote",
+      "search",
       "table",
       "tabs",
-      "search"
+      "video"
     ]
   },
   {
@@ -59,9 +62,9 @@
     ]
   },
   {
-    "id": "future-building",
+    "id": "common-carousel",
     "components": [
-      "future-building-item"
+      "common-carousel-item"
     ]
   },
   {
@@ -74,12 +77,6 @@
     "id": "tabs",
     "components": [
       "tabs-item"
-    ]
-  },
-  {
-    "id": "search",
-    "components": [
-      "search-item"
     ]
   }
 ]
