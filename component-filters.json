@@ -15,7 +15,14 @@
       "hero",
       "cards",
       "columns",
-      "fragment"
+      "fragment",
+      "accordion",
+      "carousel",
+      "future-building",
+      "quote",
+      "table",
+      "tabs",
+      "search"
     ]
   },
   {
@@ -67,6 +74,12 @@
     "id": "tabs",
     "components": [
       "tabs-item"
+    ]
+  },
+  {
+    "id": "search",
+    "components": [
+      "search-item"
     ]
   }
 ]
