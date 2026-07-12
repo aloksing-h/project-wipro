@@ -60,6 +60,43 @@ async function loadFonts() {
 }
 
 /**
+ * Wraps bold-promises section paragraphs into two named groups:
+ * bp-subitem1 + bp-subitem2 → .bp-col-left
+ * bp-subitem3 + bp-subitem4 + bp-subitem5 → .bp-col-right
+ * @param {Element} main
+ */
+function decorateBoldPromises(main) {
+  const wrapper = main.querySelector('.bold-promises.section .default-content-wrapper');
+  if (!wrapper) return;
+
+  const paragraphs = [...wrapper.querySelectorAll(':scope > p')];
+  if (paragraphs.length < 2) return;
+
+  const leftDiv = document.createElement('div');
+  leftDiv.classList.add('bp-col-left');
+  paragraphs.slice(0, 2).forEach((p, i) => {
+    p.classList.add(`bp-subitem${i + 1}`);
+    leftDiv.append(p);
+  });
+
+  const rightDiv = document.createElement('div');
+  rightDiv.classList.add('bp-col-right');
+  paragraphs.slice(2).forEach((p, i) => {
+    p.classList.add(`bp-subitem${i + 3}`);
+    rightDiv.append(p);
+  });
+
+  wrapper.append(leftDiv, rightDiv);
+
+  dataMapWpObj.CLASS_PREFIXES = [
+    'bp-item',
+    'bp-subitem',
+    'bp-subitem-finelsub',
+  ];
+  dataMapWpObj.addIndexed(wrapper);
+}
+
+/**
  * Builds all synthetic blocks in a container element.
  * @param {Element} main The container element
  */
@@ -122,6 +159,7 @@ export function decorateMain(main) {
   decorateSections(main);
   decorateBlocks(main);
   decorateButtons(main);
+  decorateBoldPromises(main);
 }
 
 /**
@@ -185,14 +223,3 @@ async function loadPage() {
 }
 
 loadPage();
-
-const boldPromises = document.querySelector('.bold-promises');
-
-if (boldPromises != null) {
-  dataMapWpObj.CLASS_PREFIXES = [
-    'bp-item',
-    'bp-subitem',
-    'bp-subitem-finelsub',
-  ];
-  dataMapWpObj.addIndexed(boldPromises);
-}

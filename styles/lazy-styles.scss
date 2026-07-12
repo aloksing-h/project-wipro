@@ -23,58 +23,54 @@
     align-items: start;
   }
 
-  // ── LEFT COLUMN — p1, p2 (headline) ───
-  .default-content-wrapper p:nth-child(-n+2) {
-    grid-column: 1;
-    font-family: $proximanova;
-    font-size: fluid(28px, 48px);
-    font-weight: map.get($font-weights, bold);
-    line-height: 1.15;
-    color: $primary-black;
-  }
+  // ── LEFT COLUMN — bp-subitem1, bp-subitem2 (headline) ───
+  .bp-col-left {
+    .bp-subitem1,
+    .bp-subitem2 {
+      font-family: $proximanova;
+      font-size: fluid(28px, 64px);
+      font-weight: map.get($font-weights, light);
+      line-height: 64px;
+      color: $primary-black;
+    }
 
-  .default-content-wrapper p:nth-child(2) {
-    margin-top: map.get($spacing, md);
+    .bp-subitem2 {
+      margin-top: map.get($spacing, md);
 
-    strong {
-      color: $primary-blue;
-      font-weight: map.get($font-weights, bold);
+      strong {
+        color: $primary-blue;
+        font-weight: map.get($font-weights, bold);
+      }
     }
   }
 
-  // ── RIGHT COLUMN — p3–p5 (body text) ──
-  .default-content-wrapper p:nth-child(n+3) {
-    grid-column: 2;
-    font-family: $proximanova;
-    font-size: fluid(14px, 16px);
-    font-weight: map.get($font-weights, regular);
-    line-height: 1.75;
-    color: $color-text-body;
-  }
+  // ── RIGHT COLUMN — bp-subitem3–bp-subitem5 (body text) ──
+  .bp-col-right {
+    .bp-subitem3,
+    .bp-subitem4,
+    .bp-subitem5 {
+      font-family: $proximanova;
+      font-size: fluid(14px, 16px);
+      font-weight: map.get($font-weights, regular);
+      line-height: 1.75;
+      color: $color-text-body;
+    }
 
-  .default-content-wrapper p:nth-child(n+4) {
-    margin-top: map.get($spacing, md);
+    .bp-subitem4,
+    .bp-subitem5 {
+      margin-top: map.get($spacing, md);
+    }
   }
 
   // ── RESPONSIVE ─────────────────────────
   @include media(mobile) {
     .default-content-wrapper {
       grid-template-columns: 1fr;
-    }
-
-    .default-content-wrapper p:nth-child(-n+2),
-    .default-content-wrapper p:nth-child(n+3) {
-      grid-column: 1;
-    }
-
-    .default-content-wrapper p:nth-child(3) {
-      margin-top: map.get($spacing, xl);
-    }
-  }
-
-  @include media(mobile) {
-    .default-content-wrapper {
       padding: 0 map.get($spacing, md);
+    }
+
+    .bp-col-right {
+      margin-top: map.get($spacing, xl);
     }
   }
 }
