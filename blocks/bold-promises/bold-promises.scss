@@ -1,0 +1,75 @@
+@use "sass:map";
+@use "../../styles/common-theme/css/variables_mixins" as *;
+@use "../../styles/common-theme/css/fluid-typography" as *;
+
+// ----------------------------------------
+// BOLD PROMISES BLOCK
+// ----------------------------------------
+
+.bold-promises {
+  padding: map.get($spacing, xxl) map.get($spacing, lg);
+  background-color: $primary-white;
+  color: $primary-black;
+
+  // ── Row 1 ─────────────────────────────
+  .bp-item1 {
+    @include flex-center(flex-start, space-between);
+    
+    gap: map.get($spacing, lg);
+    margin-bottom: map.get($spacing, xl);
+
+    .bp-subitem1 {
+      font-family: $butlerpro;
+      font-weight: map.get($font-weights, bold);
+      font-size: fluid(24px, 44px);
+      color: $primary-blue;
+      line-height: 1.2;
+    }
+
+    .bp-subitem2 {
+      font-family: $poppins;
+      font-weight: map.get($font-weights, regular);
+      font-size: fluid(14px, 16px);
+      color: $color-text-body;
+      line-height: 1.6;
+    }
+  }
+
+  // ── Row 2 ─────────────────────────────
+  .bp-item2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: map.get($spacing, lg);
+
+    .comlist {
+      background-color: map.get($blue-1, b25);
+      border-radius: map.get($radius, r12);
+      padding: map.get($spacing, lg);
+      box-shadow: $box-shadow-soft;
+
+      p {
+        font-family: $poppins;
+        font-weight: map.get($font-weights, regular);
+        font-size: fluid(14px, 16px);
+        color: $color-text-body;
+        line-height: 1.6;
+      }
+    }
+  }
+
+  // ── Responsive ────────────────────────
+  @include media(mobile) {
+    padding: map.get($spacing, xl) map.get($spacing, md);
+
+    .bp-item1 {
+      flex-direction: column;
+      gap: map.get($spacing, md);
+    }
+  }
+
+  @include media(tab) {
+    .bp-item2 {
+      grid-template-columns: 1fr;
+    }
+  }
+}
