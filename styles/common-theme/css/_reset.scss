@@ -8,7 +8,7 @@
 html {
   box-sizing: border-box;
   font-size: rem(16px);
-  font-family: $butlerpro;
+  font-family: $proximanova;
   font-weight: map.get($font-weights, regular);
 
   // scroll-behavior: smooth;
@@ -86,8 +86,6 @@ a {
 
 button {
   cursor: pointer;
-
-  // font-family:$butlerpro;
   background: none;
   border: none;
 }
@@ -103,8 +101,6 @@ select {
   outline: 0;
   resize: none;
   border-radius: 0;
-
-  // font-family:$butlerpro;
   font-size: inherit;
   box-sizing: border-box;
 }

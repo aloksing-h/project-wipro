@@ -1,7 +1,7 @@
 @use "sass:math";
 
 $default-min-bp: 390px;
-$default-max-bp: 1440px;
+$default-max-bp: 1614px;
 
 // Round function using math module
 @function round($number, $decimals: 0) {

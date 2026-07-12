@@ -161,9 +161,7 @@ $sub-header: #212121;
 // ----------------------------------------
 // FONTS
 // ----------------------------------------
-$poppins: "Poppins", sans-serif;
-$butlerpro: "ButlerPro", sans-serif;
-$inter: "Inter", sans-serif;
+$proximanova: proximanova, proximanova-fallback, sans-serif;
 $font-weights: (
   light: 300,
   regular: 400,
@@ -175,7 +173,7 @@ $font-weights: (
 );
 
 // Font mixin
-@mixin font-style($size, $line-height, $color, $weight: null, $family: $body) {
+@mixin font-style($size, $line-height, $color, $weight: null, $family: $proximanova) {
   font-size: $size;
   line-height: $line-height;
   color: $color;
@@ -193,7 +191,7 @@ $font-weights: (
 // ----------------------------------------
 
 @mixin typography-h2 {
-  font-family: $butlerpro;
+  font-family: $proximanova;
   color: $primary-blue;
   font-weight: map.get($font-weights, bold);
   line-height: $line-height-h2;
@@ -324,8 +322,8 @@ $breakpoints: (
 
 // Typeface start
 
-$title: "Inter", sans-serif;
-$body: "Inter", sans-serif;
+$title: $proximanova;
+$body: $proximanova;
 $weight-regular: "Regular";
 $weight-semibold: "Semibold";
 $weight-medium: "Medium";
