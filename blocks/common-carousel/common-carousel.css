@@ -1,0 +1,77 @@
+/* common-carousel block */
+.common-carousel {
+  position: relative;
+  overflow: hidden;
+}
+
+.common-carousel .carousel-track {
+  display: flex;
+  transition: transform 0.4s ease;
+}
+
+.common-carousel .carousel-slide {
+  flex: 0 0 100%;
+  min-width: 100%;
+}
+
+.common-carousel .carousel-slide picture img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.common-carousel .carousel-slide .slide-text {
+  padding: 16px;
+}
+
+.common-carousel .carousel-slide .slide-description {
+  padding: 0 16px 16px;
+  color: #505050;
+}
+
+/* Navigation buttons */
+.common-carousel .carousel-nav {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.common-carousel .carousel-btn {
+  background: none;
+  border: 1px solid #2e2a94;
+  color: #2e2a94;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.common-carousel .carousel-btn:hover {
+  background-color: #2e2a94;
+  color: #fff;
+}
+
+/* Dots */
+.common-carousel .carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.common-carousel .carousel-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #ccc;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.common-carousel .carousel-dot.active {
+  background-color: #2e2a94;
+}
