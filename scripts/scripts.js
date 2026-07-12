@@ -11,6 +11,8 @@ import {
   loadCSS,
 } from './aem.js';
 
+import dataMapWpObj from './constant.js';
+
 /**
  * Moves all the attributes from a given elmenet to another given element.
  * @param {Element} from the element to copy attributes from
@@ -183,3 +185,14 @@ async function loadPage() {
 }
 
 loadPage();
+
+const boldPromises = document.querySelector('.bold-promises');
+
+if (boldPromises != null) {
+  dataMapWpObj.CLASS_PREFIXES = [
+    'bp-item',
+    'bp-subitem',
+    'bp-subitem-finelsub',
+  ];
+  dataMapWpObj.addIndexed(boldPromises);
+}

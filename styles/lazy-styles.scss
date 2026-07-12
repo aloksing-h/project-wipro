@@ -1,12 +1,12 @@
 @use "sass:map";
-@use "../../styles/common-theme/css/variables_mixins" as *;
-@use "../../styles/common-theme/css/fluid-typography" as *;
+@use "../styles/common-theme/css/variables_mixins" as *;
+@use "../styles/common-theme/css/fluid-typography" as *;
 
 // ----------------------------------------
 // BOLD PROMISES — section-level styling
-// The content lives as default content inside a styled section,
-// so we target .bold-promises.section directly.
-// Layout: p1–p2 → left headline column | p3–p5 → right body column
+// bold-promises is a section style (not a block), so CSS lives here
+// in lazy-styles which is always loaded for every page.
+// Layout: p1–p2 → left headline | p3–p5 → right body text
 // ----------------------------------------
 
 .bold-promises.section {
@@ -23,7 +23,7 @@
     align-items: start;
   }
 
-  // ── LEFT COLUMN — headline (p1, p2) ───
+  // ── LEFT COLUMN — p1, p2 (headline) ───
   .default-content-wrapper p:nth-child(-n+2) {
     grid-column: 1;
     font-family: $butlerpro;
@@ -42,7 +42,7 @@
     }
   }
 
-  // ── RIGHT COLUMN — body text (p3–p5) ──
+  // ── RIGHT COLUMN — p3–p5 (body text) ──
   .default-content-wrapper p:nth-child(n+3) {
     grid-column: 2;
     font-family: $poppins;
@@ -57,7 +57,7 @@
   }
 
   // ── RESPONSIVE ─────────────────────────
-  @include media(tab) {
+  @include media(mobile) {
     .default-content-wrapper {
       grid-template-columns: 1fr;
     }
