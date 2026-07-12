@@ -136,6 +136,18 @@
           {
             "name": "Highlight",
             "value": "highlight"
+          },
+          {
+            "name": "Bold Promises",
+            "value": "bold-promises"
+          },
+          {
+            "name": "Overflow Tabs",
+            "value": "overflow-tabs"
+          },
+          {
+            "name": "Ai Tabs",
+            "value": "ai-tabs"
           }
         ]
       }
