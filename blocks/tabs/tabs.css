@@ -1,21 +1,11 @@
+@import url("../../../styles/fonts.css");
+
 .tabs .tabs-list {
   display: flex;
   gap: 0.5ch;
   max-width: 100%;
   font-size: var(--body-font-size-xs);
   overflow-x: auto;
-}
-
-@media (width >= 600px) {
-  .tabs .tabs-list {
-    font-size: var(--body-font-size-s);
-  }
-}
-
-@media (width >= 900px) {
-  .tabs .tabs-list {
-    font-size: var(--body-font-size-m);
-  }
 }
 
 .tabs .tabs-list button {
@@ -39,10 +29,22 @@
   margin: 0;
 }
 
-.tabs .tabs-list button[aria-selected='true'] {
+.tabs .tabs-list button[aria-selected="true"] {
   border-bottom: 1px solid var(--background-color);
   background-color: var(--background-color);
   cursor: initial;
+}
+
+@media (width >=600px) {
+  .tabs .tabs-list {
+    font-size: var(--body-font-size-s);
+  }
+}
+
+@media (width >=900px) {
+  .tabs .tabs-list {
+    font-size: var(--body-font-size-m);
+  }
 }
 
 .tabs .tabs-panel {
@@ -52,6 +54,8 @@
   overflow: auto;
 }
 
-.tabs .tabs-panel[aria-hidden='true'] {
+.tabs .tabs-panel[aria-hidden="true"] {
   display: none;
 }
+
+/*# sourceMappingURL=tabs.css.map */
