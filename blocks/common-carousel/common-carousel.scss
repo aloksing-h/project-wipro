@@ -1,0 +1,203 @@
+@use "sass:map";
+@use "../../styles/common-theme/css/variables_mixins" as *;
+@use "../../styles/common-theme/css/fluid-typography" as *;
+@import "../swiper/swiper-bundle.min.css";
+
+// Color maps derived from Figma reference assets layout parameters
+$dark-viewport-bg: #000000;
+$card-light-bg: #ffffff;
+$title-light-color: #ffffff;
+$text-dark-muted: #2d2d2d;
+$accent-gradient-start: #2e2a94;
+$accent-gradient-end: #1c7fa6;
+
+.section.common-carousel-container {
+  background-color: $dark-viewport-bg;
+  padding: 60px 20px;
+  overflow: hidden;
+
+  .default-content-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+
+    h2 {
+      color: $title-light-color;
+      font-size: 28px;
+      font-weight: 500;
+      line-height: 1.3;
+      margin: 0 0 32px 0;
+      letter-spacing: -0.01em;
+    }
+  }
+}
+
+.common-carousel.block {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+
+  .swiper {
+    overflow: visible; // Enables rendering overflowing adjacent slide panels cleanly
+  }
+
+  // Carousel Layout Cards Structure Setup
+  .carousel-card {
+    background-color: $card-light-bg;
+    border-radius: 20px;
+    overflow: hidden;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+
+    .card-top-panel {
+      position: relative;
+      height: 220px;
+      width: 100%;
+      overflow: hidden;
+
+      picture, img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.5) 100%);
+        z-index: 1;
+      }
+    }
+
+    .card-text-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 24px;
+      z-index: 2;
+      color: $title-light-color;
+
+      .card-main-title {
+        font-size: 36px;
+        font-weight: 400;
+        line-height: 1.2;
+        margin-bottom: 12px;
+        letter-spacing: 0.02em;
+      }
+
+      .card-subtitle {
+        font-size: 15px;
+        font-weight: 300;
+        line-height: 1.4;
+        opacity: 0.95;
+      }
+    }
+
+    .card-bottom-panel {
+      padding: 28px 24px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-start;
+
+      .card-body-text {
+        font-size: 13.5px;
+        line-height: 1.5;
+        color: $text-dark-muted;
+        margin: 0 0 24px 0;
+        font-weight: 400;
+      }
+
+      // Rounded Capsule action button styling matching Figma gradient maps
+      .card-cta-button {
+        display: inline-flex;
+        align-items: center;
+        background: linear-gradient(90deg, $accent-gradient-start 0%, $accent-gradient-end 100%);
+        color: $title-light-color;
+        padding: 12px 28px;
+        border-radius: 25px;
+        font-size: 14px;
+        font-weight: 400;
+        text-decoration: none;
+        transition: transform 0.2s ease, opacity 0.2s ease;
+        gap: 10px;
+
+        .cta-arrow {
+          font-size: 16px;
+          line-height: 1;
+        }
+
+        &:hover {
+          opacity: 0.95;
+          text-decoration: none;
+          transform: translateY(-1px);
+        }
+      }
+    }
+  }
+
+  // Navigation interface controls panel mechanics positioning properties
+  .carousel-controls-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 40px;
+    width: 100%;
+    user-select: none;
+  }
+
+  .custom-nav-arrow {
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 22px;
+    cursor: pointer;
+    background: transparent;
+    transition: color 0.2s ease;
+    line-height: 1;
+
+    &::after {
+      display: none; // Unsets default Swiper font glyph configurations
+    }
+
+    &:hover {
+      color: $title-light-color;
+    }
+
+    &.swiper-button-disabled {
+      opacity: 0.15;
+      pointer-events: none;
+    }
+  }
+
+  .custom-dots-indicator {
+    position: static;
+    width: auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    .swiper-pagination-bullet {
+      width: 7px;
+      height: 7px;
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      opacity: 1;
+      margin: 0 !important;
+      transition: background-color 0.2s ease, border-color 0.2s ease;
+
+      &-active {
+        background-color: $title-light-color;
+        border-color: $title-light-color;
+      }
+    }
+  }
+}

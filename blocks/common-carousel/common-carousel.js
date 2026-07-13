@@ -1,85 +1,136 @@
-function buildSlide(row) {
-  const slide = document.createElement('div');
-  slide.classList.add('carousel-slide');
+import Swiper from '../swiper/swiper-bundle.min.js';
+import dataMapWpObj from '../../scripts/constant.js';
+import { div, img } from '../../scripts/dom-helpers.js';
 
-  const [imageCell, textCell, descCell] = [...row.children];
-
-  if (imageCell) slide.append(imageCell);
-
-  if (textCell) {
-    textCell.classList.add('slide-text');
-    slide.append(textCell);
-  }
-
-  if (descCell) {
-    descCell.classList.add('slide-description');
-    slide.append(descCell);
-  }
-
-  return slide;
-}
-
+/**
+ * Decorates the common-carousel block into a responsive Swiper layout
+ * @param {HTMLElement} block The authored block element container
+ */
 export default function decorate(block) {
   const rows = [...block.children];
-
-  // Build track
-  const track = document.createElement('div');
-  track.classList.add('carousel-track');
+  const slides = [];
 
   rows.forEach((row) => {
-    track.append(buildSlide(row));
-    row.remove();
+    const panels = [...row.children];
+    if (panels.length >= 2) {
+      const mediaPanel = panels[0];
+      const titlePanel = panels[1];
+      const contentPanel = panels[2] || null;
+
+      // Extract semantic details safely
+      const rawPicture = mediaPanel.querySelector('picture');
+      const headline = titlePanel.querySelector('h4')?.textContent || '';
+      const subtitle = titlePanel.querySelector('p')?.textContent || '';
+      
+      const bodyParagraphs = contentPanel ? [...contentPanel.querySelectorAll('p:not(.button-container)')] : [];
+      const ctaAnchor = contentPanel ? contentPanel.querySelector('a') : null;
+
+      // Build out slide semantic DOM tree nodes
+      const slideItem = div({ class: 'swiper-slide carousel-card' });
+
+      // Top graphical section panel
+      const topSection = div({ class: 'card-top-panel' });
+      if (rawPicture) {
+        topSection.append(rawPicture);
+      }
+
+      const textOverlay = div(
+        { class: 'card-text-overlay' },
+        div({ class: 'card-main-title' }, headline),
+        div({ class: 'card-subtitle' }, subtitle)
+      );
+      topSection.append(textOverlay);
+
+      // Bottom information copy section panel
+      const bottomSection = div({ class: 'card-bottom-panel' });
+      
+      bodyParagraphs.forEach((pEl) => {
+        pEl.className = 'card-body-text';
+        bottomSection.append(pEl);
+      });
+
+      if (ctaAnchor) {
+        ctaAnchor.className = 'card-cta-button';
+        // Append graphic inline arrow wrapper hook matching layout design parameters
+        const visualArrow = document.createElement('span');
+        visualArrow.className = 'cta-arrow';
+        visualArrow.innerHTML = '&rarr;';
+        ctaAnchor.append(visualArrow);
+        bottomSection.append(ctaAnchor);
+      }
+
+      slideItem.append(topSection, bottomSection);
+      slides.push(slideItem);
+    }
   });
 
-  block.append(track);
+  // Re-write component DOM element container context into Swiper structure wrapper nodes
+  block.textContent = '';
 
-  const slides = [...track.children];
-  const total = slides.length;
-  let current = 0;
+  const swiperWrapper = div({ class: 'swiper-wrapper' });
+  swiperWrapper.append(...slides);
 
-  function goTo(index) {
-    current = (index + total) % total;
-    track.style.transform = `translateX(-${current * 100}%)`;
-    block.querySelectorAll('.carousel-dot').forEach((dot, i) => {
-      dot.classList.toggle('active', i === current);
-    });
+  const swiperContainer = div({ class: 'swiper' }, swiperWrapper);
+
+  // Interface Navigation Controllers Matrix Elements setup
+  const prevBtn = div({ class: 'swiper-button-prev custom-nav-arrow' });
+  prevBtn.innerHTML = '&#8592;'; // Left Unicode Arrow (←)
+
+  const nextBtn = div({ class: 'swiper-button-next custom-nav-arrow' });
+  nextBtn.innerHTML = '&#8594;'; // Right Unicode Arrow (→)
+
+  const dotPagination = div({ class: 'swiper-pagination custom-dots-indicator' });
+
+  const controlsContainer = div(
+    { class: 'carousel-controls-container' },
+    prevBtn,
+    dotPagination,
+    nextBtn
+  );
+
+  swiperContainer.append(controlsContainer);
+  block.append(swiperContainer);
+
+  // Standardize styling hooks using the project's indexing token system
+  if (dataMapWpObj && dataMapWpObj.addIndexed) {
+    dataMapWpObj.CLASS_PREFIXES = [
+      'carousel-cont',
+      'carousel-sec',
+      'carousel-sub',
+      'carousel-inner-text',
+      'carousel-list',
+      'carousel-list-content',
+    ];
+    dataMapWpObj.addIndexed(block);
   }
 
-  // Navigation buttons
-  const nav = document.createElement('div');
-  nav.classList.add('carousel-nav');
+  // Initialize runtime configuration parameters for the Swiper engine
+  const swiper = new Swiper(swiperContainer, {
+    slidesPerView: 1,
+    spaceBetween: 20,
+    watchOverflow: true,
+    grabCursor: true,
+    navigation: {
+      nextEl: nextBtn,
+      prevEl: prevBtn,
+    },
+    pagination: {
+      el: dotPagination,
+      clickable: true,
+    },
+    breakpoints: {
+      768: {
+        slidesPerView: 2,
+        spaceBetween: 24,
+      },
+      1024: {
+        slidesPerView: 3,
+        spaceBetween: 32,
+      },
+    },
+  });
 
-  const prev = document.createElement('button');
-  prev.classList.add('carousel-btn');
-  prev.setAttribute('aria-label', 'Previous slide');
-  prev.innerHTML = '&#8592;';
-  prev.addEventListener('click', () => goTo(current - 1));
-
-  const next = document.createElement('button');
-  next.classList.add('carousel-btn');
-  next.setAttribute('aria-label', 'Next slide');
-  next.innerHTML = '&#8594;';
-  next.addEventListener('click', () => goTo(current + 1));
-
-  nav.append(prev, next);
-  block.append(nav);
-
-  // Dot indicators
-  if (total > 1) {
-    const dots = document.createElement('div');
-    dots.classList.add('carousel-dots');
-
-    slides.forEach((_, i) => {
-      const dot = document.createElement('button');
-      dot.classList.add('carousel-dot');
-      dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
-      if (i === 0) dot.classList.add('active');
-      dot.addEventListener('click', () => goTo(i));
-      dots.append(dot);
-    });
-
-    block.append(dots);
-  }
-
-  goTo(0);
+  swiperContainer.addEventListener('common-carousel:destroy', () => {
+    swiper.destroy(true, true);
+  });
 }
