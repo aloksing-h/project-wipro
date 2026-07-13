@@ -90,9 +90,10 @@
     position: sticky;
     top: var(--nav-height, 64px);
     z-index: 10;
+    margin: 0;
 
     .default-content-wrapper {
-        max-width: 1200px;
+        // max-width: 1200px;
         margin: 0 auto;
         padding: 0 map.get($spacing, lg);
         overflow-x: auto;
@@ -105,6 +106,8 @@
 
     ul {
         display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
         list-style: none;
         margin: 0;
         padding: 0;
@@ -113,7 +116,7 @@
 
     li {
         font-family: $proximanova;
-        font-size: fluid(13px, 15px);
+        font-size: fluid(28px, 36px);
         font-weight: map.get($font-weights, medium);
         /* stylelint-disable-next-line color-function-notation */
         color: rgb(255, 255, 255, 55%);
@@ -154,4 +157,3 @@
         }
     }
 }
-
