@@ -149,6 +149,28 @@ export function decorateButtons(main) {
 }
 
 /**
+ * Decorates overflow-tabs section: marks first li active,
+ * handles click to toggle active state.
+ * @param {Element} main
+ */
+function decorateOverflowTabs(main) {
+  const ul = main.querySelector('.overflow-tabs.section ul');
+  if (!ul) return;
+
+  const items = [...ul.querySelectorAll('li')];
+  if (!items.length) return;
+
+  items[0].classList.add('active');
+
+  items.forEach((item) => {
+    item.addEventListener('click', () => {
+      items.forEach((i) => i.classList.remove('active'));
+      item.classList.add('active');
+    });
+  });
+}
+
+/**
  * Decorates the main element.
  * @param {Element} main The main element
  */
@@ -160,6 +182,7 @@ export function decorateMain(main) {
   decorateBlocks(main);
   decorateButtons(main);
   decorateBoldPromises(main);
+  decorateOverflowTabs(main);
 }
 
 /**
