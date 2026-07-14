@@ -25,7 +25,8 @@
       "search",
       "table",
       "tabs",
-      "video"
+      "video",
+      "ai-cards"
     ]
   },
   {
@@ -38,6 +39,12 @@
     "id": "cards",
     "components": [
       "card"
+    ]
+  },
+  {
+    "id": "ai-cards",
+    "components": [
+      "ai-card-item"
     ]
   },
   {
