@@ -196,7 +196,7 @@
   pointer-events: none;
 }
 
-*/eslint-disable-next-line no-unused-vars*/
+/* stylelint-disable-next-line no-descending-specificity */
 .common-carousel.block .swiper-button-prev {
   left: 50%;
   transform: translateX(-160px);
@@ -211,7 +211,7 @@
   display: none;
 }
 
-*/eslint-disable-next-line no-unused-vars*/
+/* stylelint-disable-next-line no-descending-specificity */
 .common-carousel.block .swiper-button-next {
   right: 50%;
   left: auto;
