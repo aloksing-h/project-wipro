@@ -37,6 +37,19 @@ $accent-gradient-end: #1c7fa6;
 
   .swiper {
     overflow: visible; // Enables rendering overflowing adjacent slide panels cleanly
+    padding-bottom: 210px; // Allocates structural space at the bottom for navigation placement
+  }
+
+  .swiper-wrapper {
+    gap: 76px;
+
+    @include media(tab) {
+      gap: 10px;
+    }
+
+    @include media(mobile) {
+      gap: 0;
+    }
   }
 
   // Carousel Layout Cards Structure Setup
@@ -122,11 +135,9 @@ $accent-gradient-end: #1c7fa6;
 
       // Rounded Capsule action button styling matching Figma gradient maps
       .card-cta-button {
-        display: flex;
+        display: inline-flex;
         width: 324px;
         height: 108px;
-
-        // padding: 17px 30px;
         justify-content: center;
         align-items: center;
         gap: 20px;
@@ -163,63 +174,96 @@ $accent-gradient-end: #1c7fa6;
     }
   }
 
-  // Navigation interface controls panel mechanics positioning properties
-  .carousel-controls-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 24px;
-    margin-top: 40px;
-    width: 100%;
-    user-select: none;
+  // Refactored Default Swiper Controls Positioning & Visual Styling
+  .swiper-button-prev,
+  .swiper-button-next {
+    position: absolute;
+    top: auto;
+    bottom: 30px; // Centers vertically relative to the pagination dots baseline
+    width: 44px;
+    height: 44px;
+    margin: 0;
+    z-index: 10;
+    cursor: pointer;
+   color: rgb(255 255 255 / 60%);
+    transition: color 0.2s ease, opacity 0.2s ease;
+
+    // Use default swiper icon font glyph properties with design scale adjustments
+    &::after {
+      font-size: 32px;
+      font-weight: bold;
+    }
+
+    &:hover {
+      color: $title-light-color;
+    }
+
+    &.swiper-button-disabled {
+      opacity: 0.15;
+      pointer-events: none;
+    }
   }
 
-  // .custom-nav-arrow {
-  //   position: static;
-  //   width: auto;
-  //   height: auto;
-  //   margin: 0;
-  //   color: rgb(255, 255, 255, 60%);
-  //   font-size: 22px;
-  //   cursor: pointer;
-  //   background: transparent;
-  //   transition: color 0.2s ease;
-  //   line-height: 1;
+  // Position Left Navigation Button
+  .swiper-button-prev {
+    left: 50%;
+    transform: translateX(-160px); // Offsets leftward to make room for centered pagination dots
 
-  //   &::after {
-  //     display: none; // Unsets default Swiper font glyph configurations
-  //   }
+    .swiper-navigation-icon {
+      background: url('../../icons/swiper-arrow-left.svg') center / contain no-repeat;
+      transform: rotate(0);
 
-  //   &:hover {
-  //     color: $title-light-color;
-  //   }
+      path {
+        display: none;
+      }
+    }
+  }
 
-  //   &.swiper-button-disabled {
-  //     opacity: 0.15;
-  //     pointer-events: none;
-  //   }
-  // }
+  // Position Right Navigation Button
+  .swiper-button-next {
+    right: 50%;
+    left: auto;
+    transform: translateX(160px); // Offsets rightward to clear the centered pagination dots
 
-  // .custom-dots-indicator {
-  //   position: static;
-  //   width: auto;
-  //   display: flex;
-  //   align-items: center;
-  //   gap: 10px;
+    .swiper-navigation-icon {
+      background: url('../../icons/swiper-arrow-left.svg') center / contain no-repeat;
+      transform: rotate(180deg);
 
-  //   .swiper-pagination-bullet {
-  //     width: 7px;
-  //     height: 7px;
-  //     background: transparent;
-  //     border: 1px solid rgb(255, 255, 255, 40%);
-  //     opacity: 1;
-  //     margin: 0 !important;
-  //     transition: background-color 0.2s ease, border-color 0.2s ease;
+      path {
+        display: none;
+      }
+    }
+  }
 
-  //     &-active {
-  //       background-color: $title-light-color;
-  //       border-color: $title-light-color;
-  //     }
-  //   }
-  // }
+  // Refactored Default Swiper Pagination Layout Controls
+  .swiper-pagination.swiper-pagination-bullets {
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    margin: 0;
+    display: flex;
+    width: 54px;
+    height: 54px;
+    padding: 12px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    .swiper-pagination-bullet {
+      width: 14px;
+      height: 14px;
+      background: transparent;
+      border: 2px solid rgb(255 255 255 / 40%);
+      opacity: 1;
+      margin: 0 !important;
+      transition: background-color 0.2s ease, border-color 0.2s ease;
+
+      &-active {
+        background-color: $title-light-color;
+        border-color: $title-light-color;
+      }
+    }
+  }
 }
