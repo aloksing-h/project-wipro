@@ -1,0 +1,101 @@
+{
+  "definitions": [
+    {
+      "title": "ai-Cards",
+      "id": "ai-cards",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "ai-Cards",
+              "filter": "ai-cards"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "ai-Card-item",
+      "id": "ai-Card-item",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "ai-Card-item",
+              "model": "ai-Card-item"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "ai-Card-item",
+      "fields": [
+        {
+          "component": "select",
+          "name": "card-size",
+          "label": "Card Size",
+          "valueType": "string",
+          "options": [
+            { "name": "Small", "value": "small" },
+            { "name": "Large (Featured)", "value": "large" }
+          ]
+        },
+        {
+          "component": "reference",
+          "valueType": "string",
+          "name": "bg-image",
+          "label": "Background Image",
+          "multi": false
+        },
+        {
+          "component": "text",
+          "name": "tag",
+          "label": "Category Tag (e.g., IT Services)",
+          "valueType": "string",
+          "value": ""
+        },
+        {
+          "component": "text",
+          "name": "title",
+          "label": "Card Title",
+          "valueType": "string",
+          "value": ""
+        },
+        {
+          "component": "richtext",
+          "name": "text",
+          "value": "",
+          "label": "Main Content (Headings & Description)",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "cta-text",
+          "label": "Button Text",
+          "valueType": "string",
+          "value": ""
+        },
+        {
+          "component": "reference",
+          "name": "cta-link",
+          "label": "Button Link",
+          "valueType": "string",
+          "multi": false
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "ai-cards",
+      "components": [
+        "ai-card"
+      ]
+    }
+  ]
+}
