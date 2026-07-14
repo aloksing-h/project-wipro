@@ -159,7 +159,7 @@
         },
         {
           "title": "ai-Card-item",
-          "id": "ai-Card-item",
+          "id": "ai-card-item",
           "plugins": {
             "xwalk": {
               "page": {

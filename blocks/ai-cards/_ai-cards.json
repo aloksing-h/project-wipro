@@ -17,14 +17,14 @@
     },
     {
       "title": "ai-Card-item",
-      "id": "ai-Card-item",
+      "id": "ai-card-item",
       "plugins": {
         "xwalk": {
           "page": {
             "resourceType": "core/franklin/components/block/v1/block/item",
             "template": {
-              "name": "ai-Card-item",
-              "model": "ai-Card-item"
+              "name": "ai-card-item",
+              "model": "ai-card-item"
             }
           }
         }
@@ -33,7 +33,7 @@
   ],
   "models": [
     {
-      "id": "ai-Card-item",
+      "id": "ai-card-item",
       "fields": [
         {
           "component": "select",
@@ -94,7 +94,7 @@
     {
       "id": "ai-cards",
       "components": [
-        "ai-Card-item"
+        "ai-card-item"
       ]
     }
   ]

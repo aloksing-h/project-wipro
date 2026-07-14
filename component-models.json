@@ -196,7 +196,7 @@
     ]
   },
    {
-      "id": "ai-Card-item",
+      "id": "ai-card-item",
       "fields": [
         {
           "component": "select",
