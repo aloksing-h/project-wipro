@@ -1,269 +1,270 @@
-// @use "sass:map";
-// @use "../../styles/common-theme/css/variables_mixins"as *;
-// @use "../../styles/common-theme/css/fluid-typography"as *;
-// @import "../swiper/swiper-bundle.min.css";
+@use "sass:map";
+@use "../../styles/common-theme/css/variables_mixins"as *;
+@use "../../styles/common-theme/css/fluid-typography"as *;
+@import "../swiper/swiper-bundle.min.css";
 
-// // Color maps derived from Figma reference assets layout parameters
-// $dark-viewport-bg: #000;
-// $card-light-bg: #fff;
-// $title-light-color: #fff;
-// $text-dark-muted: #2d2d2d;
-// $accent-gradient-start: #2e2a94;
-// $accent-gradient-end: #1c7fa6;
+// Color maps derived from Figma reference assets layout parameters
+$dark-viewport-bg: #000;
+$card-light-bg: #fff;
+$title-light-color: #fff;
+$text-dark-muted: #2d2d2d;
+$accent-gradient-start: #2e2a94;
+$accent-gradient-end: #1c7fa6;
 
-// .section.common-carousel-container {
-//   background-color: $dark-viewport-bg;
-//   padding: 60px 20px;
-//   overflow: hidden;
-//   margin: 0;
+.section.common-carousel-container {
+  background-color: $dark-viewport-bg;
+  padding: 60px 20px;
+  overflow: hidden;
+  margin: 0;
 
-//   .default-content-wrapper {
-//     margin: 0 auto;
+  .default-content-wrapper {
+    margin: 0 auto;
 
-//     h2 {
-//       color: $title-light-color;
-//       font-size: 28px;
-//       font-weight: 500;
-//       line-height: 1.3;
-//       margin: 0 0 54px;
-//       letter-spacing: -0.01em;
-//     }
-//   }
-// }
+    h2 {
+      color: $title-light-color;
+      font-size: 28px;
+      font-weight: 500;
+      line-height: 1.3;
+      margin: 0 0 54px;
+      letter-spacing: -0.01em;
+    }
+  }
+}
 
-// .common-carousel.block {
-//   margin: 0 auto;
-//   position: relative;
+.common-carousel.block {
+  margin: 0 auto;
+  position: relative;
 
-//   .swiper {
-//     overflow: visible; // Enables rendering overflowing adjacent slide panels cleanly
-//     padding-bottom: 210px; // Allocates structural space at the bottom for navigation placement
-//   }
+  .swiper {
+    overflow: visible; // Enables rendering overflowing adjacent slide panels cleanly
+    padding-bottom: 210px; // Allocates structural space at the bottom for navigation placement
+  }
 
-//   .swiper-wrapper {
-//     gap: 76px;
+  .swiper-wrapper {
+    gap: 76px;
 
-//     @include media(tab) {
-//       gap: 10px;
-//     }
+    @include media(tab) {
+      gap: 10px;
+    }
 
-//     @include media(mobile) {
-//       gap: 0;
-//     }
-//   }
+    @include media(mobile) {
+      gap: 0;
+    }
+  }
 
-//   // Carousel Layout Cards Structure Setup
-//   .carousel-card {
-//     width: 648px !important;
-//     background-color: $card-light-bg;
-//     border-radius: 20px;
-//     overflow: hidden;
-//     height: auto;
-//     display: flex;
-//     flex-direction: column;
-//     box-sizing: border-box;
+  // Carousel Layout Cards Structure Setup
+  .carousel-card {
+    width: 648px !important;
+    background-color: $card-light-bg;
+    border-radius: 20px;
+    overflow: hidden;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
 
-//     .card-top-panel {
-//       position: relative;
-//       height: 432px;
-//       width: 100%;
-//       overflow: hidden;
+    .card-top-panel {
+      position: relative;
+      height: 432px;
+      width: 100%;
+      overflow: hidden;
 
-//       picture,
-//       img {
-//         width: 100%;
-//         height: 100%;
-//         object-fit: cover;
-//         display: block;
-//       }
+      picture,
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
 
-//       &::after {
-//         content: '';
-//         position: absolute;
-//         inset: 0;
-//         background: linear-gradient(180deg,
-//             rgb(0 0 0 / 10%) 0%,
-//             rgb(0 0 0 / 50%) 100%);
-//         z-index: 1;
-//       }
-//     }
+      &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg,
+            rgb(0 0 0 / 10%) 0%,
+            rgb(0 0 0 / 50%) 100%);
+        z-index: 1;
+      }
+    }
 
-//     .card-text-overlay {
-//       position: absolute;
-//       top: 102px;
-//       left: 0;
-//       right: 0;
-//       padding: 0 54px;
-//       padding-right: 162px;
-//       z-index: 2;
-//       color: $title-light-color;
+    .card-text-overlay {
+      position: absolute;
+      top: 102px;
+      left: 0;
+      right: 0;
+      padding: 0 54px;
+      padding-right: 162px;
+      z-index: 2;
+      color: $title-light-color;
 
-//       .card-main-title {
-//         color: #FFF;
-//         font-size: 64px;
-//         font-weight: 300;
-//         line-height: normal;
-//         margin-bottom: 64px;
-//         letter-spacing: 0.02em;
-//       }
+      .card-main-title {
+        color: #FFF;
+        font-size: 64px;
+        font-weight: 300;
+        line-height: normal;
+        margin-bottom: 64px;
+        letter-spacing: 0.02em;
+      }
 
-//       .card-subtitle {
-//         color: #FFF;
-//         font-size: 32px;
-//         font-weight: 500;
-//         line-height: normal;
-//       }
-//     }
+      .card-subtitle {
+        color: #FFF;
+        font-size: 32px;
+        font-weight: 500;
+        line-height: normal;
+      }
+    }
 
-//     .card-bottom-panel {
-//       padding: 54px 162px 54px 54px;
-//       flex: 1;
-//       display: flex;
-//       flex-direction: column;
-//       justify-content: space-between;
-//       align-items: flex-start;
+    .card-bottom-panel {
+      padding: 54px 162px 54px 54px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-start;
 
-//       .card-body-text {
-//         color: #000;
-//         font-size: 24px;
-//         font-style: normal;
-//         font-weight: 400;
-//         line-height: 24.1px;
-//         margin: 0;
-//         margin-bottom: 108px;
-//       }
+      .card-body-text {
+        color: #000;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 24.1px;
+        margin: 0;
+        padding-bottom: 26px;
+      }
 
-//       // Rounded Capsule action button styling matching Figma gradient maps
-//       .card-cta-button {
-//         display: inline-flex;
-//         width: 324px;
-//         height: 108px;
-//         justify-content: center;
-//         align-items: center;
-//         gap: 20px;
-//         text-decoration: none;
-//         transition: transform 0.2s ease, opacity 0.2s ease;
-//         border-radius: 100px;
-//         background: linear-gradient(90deg, #351A54 0%, #3399B2 100%);
-//         color: #FFF;
-//         font-family: $proximanova;
-//         font-size: 32px;
-//         font-style: normal;
-//         font-weight: 400;
-//         line-height: normal;
+      // Rounded Capsule action button styling matching Figma gradient maps
+      .card-cta-button {
+        display: inline-flex;
+        width: 324px;
+        height: 108px;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        text-decoration: none;
+        transition: transform 0.2s ease, opacity 0.2s ease;
+        border-radius: 100px;
+        background: linear-gradient(90deg, #351A54 0%, #3399B2 100%);
+        color: #FFF;
+        font-family: $proximanova;
+        font-size: 32px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        margin-top: 108px;
 
-//         &::after {
-//           content: '';
-//           display: inline-flex;
-//           width: 39px;
-//           height: 39px;
-//           background: url('../../icons/right-arrow-sig.svg') center / contain no-repeat;
-//           flex-shrink: 0;
-//         }
+        &::after {
+          content: '';
+          display: inline-flex;
+          width: 39px;
+          height: 39px;
+          background: url('../../icons/right-arrow-sig.svg') center / contain no-repeat;
+          flex-shrink: 0;
+        }
 
-//         .cta-arrow {
-//           display: none;
-//         }
+        .cta-arrow {
+          display: none;
+        }
 
-//         &:hover {
-//           opacity: 0.95;
-//           text-decoration: none;
-//           transform: translateY(-1px);
-//         }
-//       }
-//     }
-//   }
+        &:hover {
+          opacity: 0.95;
+          text-decoration: none;
+          transform: translateY(-1px);
+        }
+      }
+    }
+  }
 
-//   // Refactored Default Swiper Controls Positioning & Visual Styling
-//   .swiper-button-prev,
-//   .swiper-button-next {
-//     position: absolute;
-//     top: auto;
-//     bottom: 30px; // Centers vertically relative to the pagination dots baseline
-//     width: 44px;
-//     height: 44px;
-//     margin: 0;
-//     z-index: 10;
-//     cursor: pointer;
-//    color: rgb(255 255 255 / 60%);
-//     transition: color 0.2s ease, opacity 0.2s ease;
+  // Refactored Default Swiper Controls Positioning & Visual Styling
+  .swiper-button-prev,
+  .swiper-button-next {
+    position: absolute;
+    top: auto;
+    bottom: 30px; // Centers vertically relative to the pagination dots baseline
+    width: 54px;
+    height: 54px;
+    margin: 0;
+    z-index: 10;
+    cursor: pointer;
+    color: rgb(255 255 255 / 60%);
+    transition: color 0.2s ease, opacity 0.2s ease;
 
-//     // Use default swiper icon font glyph properties with design scale adjustments
-//     &::after {
-//       font-size: 32px;
-//       font-weight: bold;
-//     }
+    // Use default swiper icon font glyph properties with design scale adjustments
+    &::after {
+      font-size: 32px;
+      font-weight: bold;
+    }
 
-//     &:hover {
-//       color: $title-light-color;
-//     }
+    &:hover {
+      color: $title-light-color;
+    }
 
-//     &.swiper-button-disabled {
-//       opacity: 0.15;
-//       pointer-events: none;
-//     }
-//   }
+    &.swiper-button-disabled {
+      opacity: 0.15;
+      pointer-events: none;
+    }
+  }
 
-//   // Position Left Navigation Button
-//   .swiper-button-prev {
-//     left: 50%;
-//     transform: translateX(-160px); // Offsets leftward to make room for centered pagination dots
+  // Position Left Navigation Button
+  .swiper-button-prev {
+    left: 44%;
+    transform: translateX(-160px); // Offsets leftward to make room for centered pagination dots
 
-//     .swiper-navigation-icon {
-//       background: url('../../icons/swiper-arrow-left.svg') center / contain no-repeat;
-//       transform: rotate(0);
+    .swiper-navigation-icon {
+      background: url('../../icons/swiper-arrow-left.svg') center / contain no-repeat;
+      transform: rotate(0);
 
-//       path {
-//         display: none;
-//       }
-//     }
-//   }
+      path {
+        display: none;
+      }
+    }
+  }
 
-//   // Position Right Navigation Button
-//   .swiper-button-next {
-//     right: 50%;
-//     left: auto;
-//     transform: translateX(160px); // Offsets rightward to clear the centered pagination dots
+  // Position Right Navigation Button
+  .swiper-button-next {
+    right: 44%;
+    left: auto;
+    transform: translateX(160px); // Offsets rightward to clear the centered pagination dots
 
-//     .swiper-navigation-icon {
-//       background: url('../../icons/swiper-arrow-left.svg') center / contain no-repeat;
-//       transform: rotate(180deg);
+    .swiper-navigation-icon {
+      background: url('../../icons/swiper-arrow-left.svg') center / contain no-repeat;
+      transform: rotate(180deg);
 
-//       path {
-//         display: none;
-//       }
-//     }
-//   }
+      path {
+        display: none;
+      }
+    }
+  }
 
-//   // Refactored Default Swiper Pagination Layout Controls
-//   .swiper-pagination.swiper-pagination-bullets {
-//     position: absolute;
-//     bottom: 12px;
-//     left: 50%;
-//     transform: translateX(-50%);
-//     z-index: 10;
-//     margin: 0;
-//     display: flex;
-//     width: 54px;
-//     height: 54px;
-//     padding: 12px;
-//     justify-content: center;
-//     align-items: center;
-//     gap: 10px;
+  // Refactored Default Swiper Pagination Layout Controls
+  .swiper-pagination.swiper-pagination-bullets {
+    position: absolute;
+    bottom: 48px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    margin: 0;
+    display: flex;
+    width: auto;
+    justify-content: center;
+    align-items: center;
+    gap: 39px;
 
-//     .swiper-pagination-bullet {
-//       width: 14px;
-//       height: 14px;
-//       background: transparent;
-//       border: 2px solid rgb(255 255 255 / 40%);
-//       opacity: 1;
-//       margin: 0 !important;
-//       transition: background-color 0.2s ease, border-color 0.2s ease;
+    .swiper-pagination-bullet {
+      width: 15px;
+      height: 15px;
+      flex-shrink: 0;
+      aspect-ratio: 1/1;
+      background: transparent;
+      border: 2px solid rgb(255 255 255 / 40%);
+      opacity: 1;
+      margin: 0 !important;
+      transition: background-color 0.2s ease, border-color 0.2s ease;
 
-//       &-active {
-//         background-color: $title-light-color;
-//         border-color: $title-light-color;
-//       }
-//     }
-//   }
-// }
+      &-active {
+        background-color: $title-light-color;
+        border-color: $title-light-color;
+      }
+    }
+  }
+}
