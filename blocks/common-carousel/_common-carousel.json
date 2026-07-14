@@ -39,21 +39,24 @@
           "component": "reference",
           "valueType": "string",
           "name": "image",
-          "label": "Image",
+          "label": "Background Image",
+          "description": "Background image for the carousel slide",
           "multi": false
         },
         {
           "component": "richtext",
           "name": "text",
           "value": "",
-          "label": "Text",
+          "label": "Title & Subtitle",
+          "description": "First add a Heading 4 for the main title, then a paragraph for the subtitle",
           "valueType": "string"
         },
         {
           "component": "richtext",
           "name": "description",
           "value": "",
-          "label": "Description",
+          "label": "Body Content",
+          "description": "Add paragraphs for body text. Optionally add a link (styled as primary button) at the end",
           "valueType": "string"
         }
       ]
