@@ -1,6 +1,6 @@
 import Swiper from '../swiper/swiper-bundle.min.js';
 import dataMapWpObj from '../../scripts/constant.js';
-import { div, img } from '../../scripts/dom-helpers.js';
+import { div } from '../../scripts/dom-helpers.js';
 
 /**
  * Decorates the common-carousel block into a responsive Swiper layout
@@ -21,7 +21,6 @@ export default function decorate(block) {
       const rawPicture = mediaPanel.querySelector('picture');
       const headline = titlePanel.querySelector('h4')?.textContent || '';
       const subtitle = titlePanel.querySelector('p')?.textContent || '';
-      
       const bodyParagraphs = contentPanel ? [...contentPanel.querySelectorAll('p:not(.button-container)')] : [];
       const ctaAnchor = contentPanel ? contentPanel.querySelector('a') : null;
 
@@ -37,13 +36,12 @@ export default function decorate(block) {
       const textOverlay = div(
         { class: 'card-text-overlay' },
         div({ class: 'card-main-title' }, headline),
-        div({ class: 'card-subtitle' }, subtitle)
+        div({ class: 'card-subtitle' }, subtitle),
       );
       topSection.append(textOverlay);
 
       // Bottom information copy section panel
       const bottomSection = div({ class: 'card-bottom-panel' });
-      
       bodyParagraphs.forEach((pEl) => {
         pEl.className = 'card-body-text';
         bottomSection.append(pEl);
@@ -85,7 +83,7 @@ export default function decorate(block) {
     { class: 'carousel-controls-container' },
     prevBtn,
     dotPagination,
-    nextBtn
+    nextBtn,
   );
 
   swiperContainer.append(controlsContainer);
@@ -106,10 +104,10 @@ export default function decorate(block) {
 
   // Initialize runtime configuration parameters for the Swiper engine
   const swiper = new Swiper(swiperContainer, {
-    slidesPerView: 1,
+    slidesPerView: 'auto',
     spaceBetween: 20,
-    watchOverflow: true,
-    grabCursor: true,
+    // watchOverflow: true,
+    // grabCursor: true,
     navigation: {
       nextEl: nextBtn,
       prevEl: prevBtn,
@@ -120,11 +118,9 @@ export default function decorate(block) {
     },
     breakpoints: {
       768: {
-        slidesPerView: 2,
         spaceBetween: 24,
       },
       1024: {
-        slidesPerView: 3,
         spaceBetween: 32,
       },
     },

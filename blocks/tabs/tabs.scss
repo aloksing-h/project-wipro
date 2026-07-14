@@ -187,7 +187,7 @@
                         h3 {
                             width: 100%;
                             white-space: normal;
-                            word-break: break-word;
+                            word-break: "break-word";
                             overflow: visible;
                             font-size: fluid(48px, 64px);
                             font-weight: map.get($font-weights, light);
@@ -276,7 +276,7 @@
                         font-family: $proximanova;
                         font-size: fluid(15px, 18px);
                         font-weight: map.get($font-weights, regular);
-                        color: rgba(255, 255, 255, 0.85);
+                        color: rgb(255 255 255 / 85%);
                         line-height: 1.65;
                         margin: 0 0 map.get($spacing, xl) 0;
                     }

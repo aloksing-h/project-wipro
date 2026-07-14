@@ -1,12 +1,12 @@
 @use "sass:map";
-@use "../../styles/common-theme/css/variables_mixins" as *;
-@use "../../styles/common-theme/css/fluid-typography" as *;
+@use "../../styles/common-theme/css/variables_mixins"as *;
+@use "../../styles/common-theme/css/fluid-typography"as *;
 @import "../swiper/swiper-bundle.min.css";
 
 // Color maps derived from Figma reference assets layout parameters
-$dark-viewport-bg: #000000;
-$card-light-bg: #ffffff;
-$title-light-color: #ffffff;
+$dark-viewport-bg: #000;
+$card-light-bg: #fff;
+$title-light-color: #fff;
 $text-dark-muted: #2d2d2d;
 $accent-gradient-start: #2e2a94;
 $accent-gradient-end: #1c7fa6;
@@ -15,9 +15,9 @@ $accent-gradient-end: #1c7fa6;
   background-color: $dark-viewport-bg;
   padding: 60px 20px;
   overflow: hidden;
+  margin: 0;
 
   .default-content-wrapper {
-    max-width: 1200px;
     margin: 0 auto;
 
     h2 {
@@ -25,14 +25,13 @@ $accent-gradient-end: #1c7fa6;
       font-size: 28px;
       font-weight: 500;
       line-height: 1.3;
-      margin: 0 0 32px 0;
+      margin: 0 0 54px;
       letter-spacing: -0.01em;
     }
   }
 }
 
 .common-carousel.block {
-  max-width: 1200px;
   margin: 0 auto;
   position: relative;
 
@@ -42,6 +41,7 @@ $accent-gradient-end: #1c7fa6;
 
   // Carousel Layout Cards Structure Setup
   .carousel-card {
+    width: 648px !important;
     background-color: $card-light-bg;
     border-radius: 20px;
     overflow: hidden;
@@ -52,11 +52,12 @@ $accent-gradient-end: #1c7fa6;
 
     .card-top-panel {
       position: relative;
-      height: 220px;
+      height: 432px;
       width: 100%;
       overflow: hidden;
 
-      picture, img {
+      picture,
+      img {
         width: 100%;
         height: 100%;
         object-fit: cover;
@@ -67,38 +68,42 @@ $accent-gradient-end: #1c7fa6;
         content: '';
         position: absolute;
         inset: 0;
-        background: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.5) 100%);
+        background: linear-gradient(180deg,
+            rgb(0 0 0 / 10%) 0%,
+            rgb(0 0 0 / 50%) 100%);
         z-index: 1;
       }
     }
 
     .card-text-overlay {
       position: absolute;
-      bottom: 0;
+      top: 102px;
       left: 0;
       right: 0;
-      padding: 24px;
+      padding: 0 54px;
+      padding-right: 162px;
       z-index: 2;
       color: $title-light-color;
 
       .card-main-title {
-        font-size: 36px;
-        font-weight: 400;
-        line-height: 1.2;
-        margin-bottom: 12px;
+        color: #FFF;
+        font-size: 64px;
+        font-weight: 300;
+        line-height: normal;
+        margin-bottom: 64px;
         letter-spacing: 0.02em;
       }
 
       .card-subtitle {
-        font-size: 15px;
-        font-weight: 300;
-        line-height: 1.4;
-        opacity: 0.95;
+        color: #FFF;
+        font-size: 32px;
+        font-weight: 500;
+        line-height: normal;
       }
     }
 
     .card-bottom-panel {
-      padding: 28px 24px;
+      padding: 54px 162px 54px 54px;
       flex: 1;
       display: flex;
       flex-direction: column;
@@ -106,30 +111,47 @@ $accent-gradient-end: #1c7fa6;
       align-items: flex-start;
 
       .card-body-text {
-        font-size: 13.5px;
-        line-height: 1.5;
-        color: $text-dark-muted;
-        margin: 0 0 24px 0;
+        color: #000;
+        font-size: 24px;
+        font-style: normal;
         font-weight: 400;
+        line-height: 24.1px;
+        margin: 0;
+        margin-bottom: 108px;
       }
 
       // Rounded Capsule action button styling matching Figma gradient maps
       .card-cta-button {
-        display: inline-flex;
+        display: flex;
+        width: 324px;
+        height: 108px;
+
+        // padding: 17px 30px;
+        justify-content: center;
         align-items: center;
-        background: linear-gradient(90deg, $accent-gradient-start 0%, $accent-gradient-end 100%);
-        color: $title-light-color;
-        padding: 12px 28px;
-        border-radius: 25px;
-        font-size: 14px;
-        font-weight: 400;
+        gap: 20px;
         text-decoration: none;
         transition: transform 0.2s ease, opacity 0.2s ease;
-        gap: 10px;
+        border-radius: 100px;
+        background: linear-gradient(90deg, #351A54 0%, #3399B2 100%);
+        color: #FFF;
+        font-family: $proximanova;
+        font-size: 32px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+
+        &::after {
+          content: '';
+          display: inline-flex;
+          width: 39px;
+          height: 39px;
+          background: url('../../icons/right-arrow-sig.svg') center / contain no-repeat;
+          flex-shrink: 0;
+        }
 
         .cta-arrow {
-          font-size: 16px;
-          line-height: 1;
+          display: none;
         }
 
         &:hover {
@@ -152,52 +174,52 @@ $accent-gradient-end: #1c7fa6;
     user-select: none;
   }
 
-  .custom-nav-arrow {
-    position: static;
-    width: auto;
-    height: auto;
-    margin: 0;
-    color: rgba(255, 255, 255, 0.6);
-    font-size: 22px;
-    cursor: pointer;
-    background: transparent;
-    transition: color 0.2s ease;
-    line-height: 1;
+  // .custom-nav-arrow {
+  //   position: static;
+  //   width: auto;
+  //   height: auto;
+  //   margin: 0;
+  //   color: rgb(255, 255, 255, 60%);
+  //   font-size: 22px;
+  //   cursor: pointer;
+  //   background: transparent;
+  //   transition: color 0.2s ease;
+  //   line-height: 1;
 
-    &::after {
-      display: none; // Unsets default Swiper font glyph configurations
-    }
+  //   &::after {
+  //     display: none; // Unsets default Swiper font glyph configurations
+  //   }
 
-    &:hover {
-      color: $title-light-color;
-    }
+  //   &:hover {
+  //     color: $title-light-color;
+  //   }
 
-    &.swiper-button-disabled {
-      opacity: 0.15;
-      pointer-events: none;
-    }
-  }
+  //   &.swiper-button-disabled {
+  //     opacity: 0.15;
+  //     pointer-events: none;
+  //   }
+  // }
 
-  .custom-dots-indicator {
-    position: static;
-    width: auto;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  // .custom-dots-indicator {
+  //   position: static;
+  //   width: auto;
+  //   display: flex;
+  //   align-items: center;
+  //   gap: 10px;
 
-    .swiper-pagination-bullet {
-      width: 7px;
-      height: 7px;
-      background: transparent;
-      border: 1px solid rgba(255, 255, 255, 0.4);
-      opacity: 1;
-      margin: 0 !important;
-      transition: background-color 0.2s ease, border-color 0.2s ease;
+  //   .swiper-pagination-bullet {
+  //     width: 7px;
+  //     height: 7px;
+  //     background: transparent;
+  //     border: 1px solid rgb(255, 255, 255, 40%);
+  //     opacity: 1;
+  //     margin: 0 !important;
+  //     transition: background-color 0.2s ease, border-color 0.2s ease;
 
-      &-active {
-        background-color: $title-light-color;
-        border-color: $title-light-color;
-      }
-    }
-  }
+  //     &-active {
+  //       background-color: $title-light-color;
+  //       border-color: $title-light-color;
+  //     }
+  //   }
+  // }
 }

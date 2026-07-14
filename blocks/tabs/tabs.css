@@ -165,7 +165,7 @@
 .ai-tabs.section.tabs-container .tabs-wrapper .tabs .tabs-list button[aria-selected=true] h3 {
   width: 100%;
   white-space: normal;
-  word-break: break-word;
+  word-break: "break-word";
   overflow: visible;
   font-size: clamp(3rem, 1.31vw + 2.68rem, 4rem);
   font-weight: 300;
