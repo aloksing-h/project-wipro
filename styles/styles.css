@@ -43,7 +43,7 @@
 /* fallback fonts */
 @font-face {
   font-family: proximanova-fallback;
-  size-adjust: 97.21%;
+  size-adjust: 88.82%;
   src: local('Arial');
 }
 
@@ -295,7 +295,7 @@ main > .section {
 }
 
 main > .section > div {
-  max-width: 1200px;
+  max-width: 1614px;
   margin: auto;
   padding: 0 24px;
 }

@@ -1,6 +1,6 @@
 @use "sass:map";
-@use "../styles/common-theme/css/variables_mixins" as *;
-@use "../styles/common-theme/css/fluid-typography" as *;
+@use "../styles/common-theme/css/variables_mixins"as *;
+@use "../styles/common-theme/css/fluid-typography"as *;
 
 // ----------------------------------------
 // BOLD PROMISES — section-level styling
@@ -10,72 +10,150 @@
 // ----------------------------------------
 
 .bold-promises.section {
-  padding: clamp(40px, 6vw, 96px) 0;
-  background-color: $primary-white;
+    padding: clamp(40px, 6vw, 96px) 0;
+    background-color: $primary-white;
 
-  .default-content-wrapper {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 map.get($spacing, lg);
-    display: grid;
-    grid-template-columns: 5fr 7fr;
-    column-gap: clamp(32px, 5vw, 80px);
-    align-items: start;
-  }
-
-  // ── LEFT COLUMN — p1, p2 (headline) ───
-  .default-content-wrapper p:nth-child(-n+2) {
-    grid-column: 1;
-    font-family: $proximanova;
-    font-size: fluid(28px, 48px);
-    font-weight: map.get($font-weights, bold);
-    line-height: 1.15;
-    color: $primary-black;
-  }
-
-  .default-content-wrapper p:nth-child(2) {
-    margin-top: map.get($spacing, md);
-
-    strong {
-      color: $primary-blue;
-      font-weight: map.get($font-weights, bold);
-    }
-  }
-
-  // ── RIGHT COLUMN — p3–p5 (body text) ──
-  .default-content-wrapper p:nth-child(n+3) {
-    grid-column: 2;
-    font-family: $proximanova;
-    font-size: fluid(14px, 16px);
-    font-weight: map.get($font-weights, regular);
-    line-height: 1.75;
-    color: $color-text-body;
-  }
-
-  .default-content-wrapper p:nth-child(n+4) {
-    margin-top: map.get($spacing, md);
-  }
-
-  // ── RESPONSIVE ─────────────────────────
-  @include media(mobile) {
     .default-content-wrapper {
-      grid-template-columns: 1fr;
+        max-width: 1614px;
+        margin: 0 auto;
+        padding: 0 map.get($spacing, lg);
+        display: flex;
+        gap: 40px;
+        justify-content: space-between;
+        align-items: flex-start;
     }
 
-    .default-content-wrapper p:nth-child(-n+2),
-    .default-content-wrapper p:nth-child(n+3) {
-      grid-column: 1;
+    // ── LEFT COLUMN — bp-subitem1, bp-subitem2 (headline) ───
+    .bp-col-left {
+        flex: 0 0 46.8%;
+
+        .bp-subitem1,
+        .bp-subitem2 {
+            font-family: $proximanova;
+            font-size: 64px;
+            font-weight: map.get($font-weights, light);
+            line-height: 64px;
+            color: $primary-black;
+            margin: 0;
+        }
+
+        .bp-subitem2 {
+            margin-top: map.get($spacing, md);
+
+            strong {
+                font-weight: map.get($font-weights, semibold);
+            }
+        }
+
     }
 
-    .default-content-wrapper p:nth-child(3) {
-      margin-top: map.get($spacing, xl);
-    }
-  }
+    // ── RIGHT COLUMN — bp-subitem3–bp-subitem5 (body text) ──
+    .bp-col-right {
+        flex: 0 0 45%;
 
-  @include media(mobile) {
-    .default-content-wrapper {
-      padding: 0 map.get($spacing, md);
+        .bp-subitem3,
+        .bp-subitem4,
+        .bp-subitem5 {
+            font-family: $proximanova;
+            font-size: fluid(18px, 24px);
+            font-weight: map.get($font-weights, regular);
+            line-height: 26.4px;
+            color: $color-text-body;
+            margin: 0;
+        }
+
+        .bp-subitem4,
+        .bp-subitem5 {
+            margin-top: map.get($spacing, md);
+        }
     }
-  }
+
+    // ── RESPONSIVE ─────────────────────────
+    @include media(mobile) {
+        .default-content-wrapper {
+            grid-template-columns: 1fr;
+            padding: 0 map.get($spacing, md);
+        }
+
+        .bp-col-right {
+            margin-top: map.get($spacing, xl);
+        }
+    }
 }
 
+// ----------------------------------------
+// OVERFLOW TABS — horizontal sticky anchor tabs
+// ----------------------------------------
+
+.overflow-tabs.section {
+    background-color: $neutrals-black;
+    position: sticky;
+    top: var(--nav-height, 64px);
+    z-index: 10;
+    margin: 0;
+
+    .default-content-wrapper {
+        // max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 map.get($spacing, lg);
+        overflow-x: auto;
+        scrollbar-width: none;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+
+    ul {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        white-space: nowrap;
+    }
+
+    li {
+        font-family: $proximanova;
+        font-size: fluid(28px, 36px);
+        font-weight: map.get($font-weights, medium);
+        /* stylelint-disable-next-line color-function-notation */
+        color: rgb(255, 255, 255, 55%);
+        padding: map.get($spacing, md) map.get($spacing, lg);
+        cursor: pointer;
+        position: relative;
+        transition: color 0.2s ease;
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: $primary-white;
+            transform: scaleX(0);
+            transition: transform 0.2s ease;
+        }
+
+        &:hover {
+            color: $primary-white;
+        }
+
+        &.active {
+            color: $primary-white;
+            font-weight: map.get($font-weights, semibold);
+
+            &::after {
+                transform: scaleX(1);
+            }
+        }
+    }
+
+    @include media(mobile) {
+        .default-content-wrapper {
+            padding: 0 map.get($spacing, md);
+        }
+    }
+}

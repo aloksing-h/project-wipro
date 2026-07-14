@@ -1,0 +1,350 @@
+@use "sass:map";
+@use "../../styles/common-theme/css/variables_mixins"as *;
+@use "../../styles/common-theme/css/fluid-typography"as *;
+
+.tabs .tabs-list {
+    display: flex;
+    gap: 0.5ch;
+    max-width: 100%;
+    font-size: var(--body-font-size-xs);
+    overflow-x: auto;
+}
+
+@media (width >=600px) {
+    .tabs .tabs-list {
+        font-size: var(--body-font-size-s);
+    }
+}
+
+@media (width >=900px) {
+    .tabs .tabs-list {
+        font-size: var(--body-font-size-m);
+    }
+}
+
+.tabs .tabs-list button {
+    flex: 0 0 max-content;
+    margin: 0;
+    border: 1px solid var(--dark-color);
+    border-radius: 0;
+    padding: 0.5em;
+    background-color: #949494;
+    color: initial;
+    font-weight: bold;
+    line-height: unset;
+    text-align: initial;
+    text-overflow: unset;
+    overflow: unset;
+    white-space: unset;
+    transition: background-color 0.2s;
+}
+
+.tabs .tabs-list button p {
+    margin: 0;
+}
+
+.tabs .tabs-list button[aria-selected='true'] {
+    border-bottom: 1px solid var(--background-color);
+    background-color: var(--background-color);
+    cursor: initial;
+}
+
+.tabs .tabs-panel {
+    margin-top: -1px;
+    padding: 24px;
+    border: 1px solid var(--dark-color);
+    overflow: auto;
+}
+
+.tabs .tabs-panel[aria-hidden='true'] {
+    display: none;
+}
+
+// AI Tabs css start
+
+.ai-tabs.section.tabs-container {
+    margin: 0;
+    background-color: $neutrals-black;
+
+    .tabs-wrapper {
+        max-width: 100%;
+        margin: 0;
+        padding: 0;
+
+        // ── BLOCK LAYOUT ─────────────────────────
+        .tabs {
+            display: flex;
+            min-height: 813px;
+
+            // ── LEFT: TAB LIST ────────────────────
+            .tabs-list {
+                width: 43.71%;
+                flex-shrink: 0;
+                display: flex;
+                flex-direction: column;
+                gap: 0;
+                overflow: hidden;
+                font-size: unset;
+
+                // ── INACTIVE BUTTON BASE ─────────
+                button {
+                    flex: 1;
+                    min-height: 271px;
+                    margin: 0;
+                    border: none;
+                    border-radius: 0;
+                    padding: 48px 40px 32px 57px;
+                    text-align: left;
+                    color: $primary-white;
+                    font-family: $proximanova;
+                    font-size: 32px;
+                    font-weight: map.get($font-weights, medium);
+                    line-height: normal;
+                    text-overflow: unset;
+                    overflow: unset;
+                    white-space: unset;
+                    transition: background 0.3s ease;
+                    cursor: pointer;
+
+                    // Grid: left content | right "See more"
+                    display: grid;
+                    grid-template-columns: 1fr auto;
+                    grid-template-rows: auto auto;
+                    align-content: center;
+                    column-gap: 24px;
+
+                    // Per-tab inactive gradient backgrounds
+                    &:nth-child(1) {
+                        background: linear-gradient(82deg, #000 -20.12%, #351A54 15.83%, #363774 51.79%, #3399B2 87.75%, #7DC45E 123.71%);
+                    }
+
+                    &:nth-child(2) {
+                        background: linear-gradient(83deg, #000 -20.08%, #351A54 46.47%, #365494 113.02%);
+                    }
+
+                    &:nth-child(3) {
+                        background: linear-gradient(80deg, #000 -31.92%, #351A54 67.89%, #C82E2E 167.7%);
+                    }
+
+                    h3 {
+                        font-family: $proximanova;
+                        font-size: fluid(28px, 32px);
+                        font-weight: map.get($font-weights, medium);
+                        color: $primary-white;
+                        margin-bottom: 24px;
+                        line-height: normal;
+                        grid-column: 1;
+                        grid-row: 1;
+                    }
+
+                    // Subtitle paragraph
+                    p {
+                        margin: 0;
+                        font-size: fluid(12px, 24px);
+                        font-weight: map.get($font-weights, regular);
+                        color: #FFF;
+                        line-height: 24px;
+                        grid-column: 1;
+                        grid-row: 2;
+                    }
+
+                    // "See more" link paragraph — right column, vertically centered
+                    p:last-child {
+                        grid-column: 2;
+                        grid-row: 1 / span 2;
+                        align-self: center;
+                        margin: 0;
+                        padding: 0;
+                        display: flex;
+                        align-items: center;
+
+                        a {
+                            color: $primary-white;
+                            font-size: 13px;
+                            font-weight: map.get($font-weights, medium);
+                            text-decoration: none;
+                            display: inline-flex;
+                            align-items: center;
+                            gap: 10px;
+                            white-space: nowrap;
+
+                            &::after {
+                                content: '';
+                                display: inline-flex;
+                                width: 32px;
+                                height: 32px;
+                                background: url('../../icons/round-arrow-right.svg') center / contain no-repeat;
+                                flex-shrink: 0;
+                            }
+                        }
+                    }
+
+                    &[aria-selected='true'] {
+                        background: linear-gradient(104deg, #FFF 40.17%, #365494 182.2%);
+                        cursor: default;
+                        display: block;
+
+                        h3 {
+                            width: 100%;
+                            white-space: normal;
+                            word-break: "break-word";
+                            overflow: visible;
+                            font-size: fluid(48px, 64px);
+                            font-weight: map.get($font-weights, light);
+                            color: #000;
+
+                            &::after {
+                                content: '';
+                                display: block;
+                                width: 100%;
+                                height: 1px;
+                                background-color: $neutrals-black;
+                                margin-top: 22px;
+                            }
+                        }
+
+                        // Hide subtitle + see-more when active
+                        p {
+                            display: none;
+                        }
+                    }
+
+                    // wipro innovation network (3rd tab): smaller active font to prevent overflow
+                    &:nth-child(3)[aria-selected='true'] h3 {
+                        font-size: fluid(28px, 38px);
+                    }
+                }
+            }
+
+            // ── RIGHT: TAB PANELS ─────────────────
+            .tabs-panel {
+                flex: 1;
+                margin: 0;
+                border: none;
+                overflow: hidden;
+                display: flex;
+                align-items: flex-start;
+                padding: 56px 64px;
+                position: relative;
+
+                // Per-panel image backgrounds
+                &:nth-child(2) {
+                    background: url('../../icons/adaptive.png') center / cover no-repeat;
+                }
+
+                &:nth-child(3) {
+                    background: url('../../icons/taillor-made.png') center / cover no-repeat;
+                }
+
+                &:nth-child(4) {
+                    background: url('../../icons/side-by-side.png') center / cover no-repeat;
+                }
+
+                &[aria-hidden='true'] {
+                    display: none;
+                }
+
+                // Content div
+                >div:first-child {
+                    max-width: 460px;
+                    position: relative;
+                    z-index: 1;
+
+                    h2 {
+                        font-family: $proximanova;
+                        font-size: fluid(36px, 58px);
+                        font-weight: map.get($font-weights, light);
+                        color: $primary-white;
+                        line-height: 1.1;
+                        margin: 0 0 map.get($spacing, lg) 0;
+
+                        strong {
+                            font-weight: map.get($font-weights, bold);
+                            color: $primary-white;
+                            display: block;
+                            font-size: fluid(42px, 68px);
+                            line-height: 1;
+                            margin-bottom: 4px;
+                        }
+
+                        br {
+                            display: none; // strong is already block — <br> would add unwanted gap
+                        }
+                    }
+
+                    p {
+                        font-family: $proximanova;
+                        font-size: fluid(15px, 18px);
+                        font-weight: map.get($font-weights, regular);
+                        color: rgb(255 255 255 / 85%);
+                        line-height: 1.65;
+                        margin: 0 0 map.get($spacing, xl) 0;
+                    }
+
+                    // CTA pill button
+                    p:last-child a {
+                        display: inline-flex;
+                        align-items: center;
+                        gap: 12px;
+                        background-color: $neutrals-black;
+                        color: $primary-white;
+                        font-family: $proximanova;
+                        font-size: fluid(14px, 16px);
+                        font-weight: map.get($font-weights, medium);
+                        text-decoration: none;
+                        padding: 14px 28px;
+                        border-radius: 100px;
+                        transition: opacity 0.2s ease;
+
+                        &::after {
+                            content: '';
+                            display: inline-flex;
+                            width: 20px;
+                            height: 20px;
+                            background: url('../../icons/arrow-white.svg') center / contain no-repeat;
+                            flex-shrink: 0;
+                            
+                            // filter: invert(1);
+                        }
+
+                        &:hover {
+                            opacity: 0.8;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // ── RESPONSIVE ───────────────────────────────
+    @include media(tab) {
+        .tabs-wrapper .tabs {
+            flex-direction: column;
+
+            .tabs-list {
+                width: 100%;
+
+                button {
+                    min-height: 120px;
+                    padding: 24px map.get($spacing, lg);
+                }
+
+                button[aria-selected='true'] h3 {
+                    font-size: fluid(22px, 28px);
+                }
+            }
+
+            .tabs-panel {
+                width: 100%;
+                min-height: 400px;
+                padding: 40px map.get($spacing, lg);
+            }
+        }
+    }
+
+    @include media(mobile) {
+        .tabs-wrapper .tabs .tabs-panel {
+            padding: 32px map.get($spacing, md);
+        }
+    }
+}

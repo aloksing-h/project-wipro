@@ -148,6 +148,10 @@
           {
             "name": "Ai Tabs",
             "value": "ai-tabs"
+          },
+          {
+            "name": "Ai Tabs 2",
+            "value": "ai-tabs-2"
           }
         ]
       }
