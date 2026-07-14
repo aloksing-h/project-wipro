@@ -1,8 +1,10 @@
-@import "../../../styles/fonts.css";
+@import url("../../../styles/fonts.css");
+
 .bold-promises.section {
   padding: clamp(40px, 6vw, 96px) 0;
   background-color: #fff;
 }
+
 .bold-promises.section .default-content-wrapper {
   max-width: 1614px;
   margin: 0 auto;
@@ -12,9 +14,11 @@
   justify-content: space-between;
   align-items: flex-start;
 }
+
 .bold-promises.section .bp-col-left {
   flex: 0 0 46.8%;
 }
+
 .bold-promises.section .bp-col-left .bp-subitem1,
 .bold-promises.section .bp-col-left .bp-subitem2 {
   font-family: "Proxima Nova", sans-serif;
@@ -24,15 +28,19 @@
   color: #000;
   margin: 0;
 }
+
 .bold-promises.section .bp-col-left .bp-subitem2 {
   margin-top: 16px;
 }
+
 .bold-promises.section .bp-col-left .bp-subitem2 strong {
   font-weight: 600;
 }
+
 .bold-promises.section .bp-col-right {
   flex: 0 0 45%;
 }
+
 .bold-promises.section .bp-col-right .bp-subitem3,
 .bold-promises.section .bp-col-right .bp-subitem4,
 .bold-promises.section .bp-col-right .bp-subitem5 {
@@ -43,15 +51,18 @@
   color: #424242;
   margin: 0;
 }
+
 .bold-promises.section .bp-col-right .bp-subitem4,
 .bold-promises.section .bp-col-right .bp-subitem5 {
   margin-top: 16px;
 }
-@media (max-width: 768px) {
+
+@media (width <= 768px) {
   .bold-promises.section .default-content-wrapper {
     grid-template-columns: 1fr;
     padding: 0 16px;
   }
+
   .bold-promises.section .bp-col-right {
     margin-top: 32px;
   }
@@ -64,15 +75,18 @@
   z-index: 10;
   margin: 0;
 }
+
 .overflow-tabs.section .default-content-wrapper {
   margin: 0 auto;
   padding: 0 24px;
   overflow-x: auto;
   scrollbar-width: none;
 }
+
 .overflow-tabs.section .default-content-wrapper::-webkit-scrollbar {
   display: none;
 }
+
 .overflow-tabs.section ul {
   display: flex;
   align-items: flex-start;
@@ -82,17 +96,19 @@
   padding: 0;
   white-space: nowrap;
 }
+
 .overflow-tabs.section li {
   font-family: "Proxima Nova", sans-serif;
   font-size: clamp(1.75rem, 0.65vw + 1.59rem, 2.25rem);
   font-weight: 500;
   /* stylelint-disable-next-line color-function-notation */
-  color: rgba(255, 255, 255, 0.55);
+ color: rgb(255 255 255 / 55%);
   padding: 16px 24px;
   cursor: pointer;
   position: relative;
   transition: color 0.2s ease;
 }
+
 .overflow-tabs.section li::after {
   content: "";
   position: absolute;
@@ -104,18 +120,24 @@
   transform: scaleX(0);
   transition: transform 0.2s ease;
 }
+
 .overflow-tabs.section li:hover {
   color: #fff;
 }
+
 .overflow-tabs.section li.active {
   color: #fff;
   font-weight: 600;
 }
+
 .overflow-tabs.section li.active::after {
   transform: scaleX(1);
 }
-@media (max-width: 768px) {
+
+@media (width <= 768px) {
   .overflow-tabs.section .default-content-wrapper {
     padding: 0 16px;
   }
-}/*# sourceMappingURL=lazy-styles.css.map */
+}
+
+/*# sourceMappingURL=lazy-styles.css.map */
