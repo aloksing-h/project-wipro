@@ -94,7 +94,7 @@
     {
       "id": "ai-cards",
       "components": [
-        "ai-card"
+        "ai-Card-item"
       ]
     }
   ]
