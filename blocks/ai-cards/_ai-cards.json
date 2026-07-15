@@ -36,16 +36,6 @@
       "id": "ai-card-item",
       "fields": [
         {
-          "component": "select",
-          "name": "card-size",
-          "label": "Card Size",
-          "valueType": "string",
-          "options": [
-            { "name": "Small", "value": "small" },
-            { "name": "Large (Featured)", "value": "large" }
-          ]
-        },
-        {
           "component": "reference",
           "valueType": "string",
           "name": "bg-image",
@@ -53,39 +43,11 @@
           "multi": false
         },
         {
-          "component": "text",
-          "name": "tag",
-          "label": "Category Tag (e.g., IT Services)",
-          "valueType": "string",
-          "value": ""
-        },
-        {
-          "component": "text",
-          "name": "title",
-          "label": "Card Title",
-          "valueType": "string",
-          "value": ""
-        },
-        {
           "component": "richtext",
           "name": "text",
           "value": "",
           "label": "Main Content (Headings & Description)",
           "valueType": "string"
-        },
-        {
-          "component": "text",
-          "name": "cta-text",
-          "label": "Button Text",
-          "valueType": "string",
-          "value": ""
-        },
-        {
-          "component": "reference",
-          "name": "cta-link",
-          "label": "Button Link",
-          "valueType": "string",
-          "multi": false
         }
       ]
     }
