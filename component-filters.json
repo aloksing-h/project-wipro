@@ -16,16 +16,17 @@
       "cards",
       "columns",
       "fragment",
-      "accordion",
-      "carousel",
-      "common-carousel",
       "embed",
       "form",
       "quote",
       "search",
       "table",
       "tabs",
-      "video"
+      "video",
+      "accordion",
+      "carousel",
+      "common-carousel",
+      "image-richtext"
     ]
   },
   {
