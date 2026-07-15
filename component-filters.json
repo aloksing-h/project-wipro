@@ -68,9 +68,9 @@
     ]
   },
   {
-    "id": "image-text",
+    "id": "image-richtext",
     "components": [
-      "image-text-item"
+      "image-richtext-item"
     ]
   },
   {
