@@ -136,22 +136,6 @@
           {
             "name": "Highlight",
             "value": "highlight"
-          },
-          {
-            "name": "Bold Promises",
-            "value": "bold-promises"
-          },
-          {
-            "name": "Overflow Tabs",
-            "value": "overflow-tabs"
-          },
-          {
-            "name": "Ai Tabs",
-            "value": "ai-tabs"
-          },
-          {
-            "name": "Ai Tabs 2",
-            "value": "ai-tabs-2"
           }
         ]
       }
@@ -247,21 +231,24 @@
         "component": "reference",
         "valueType": "string",
         "name": "image",
-        "label": "Image",
+        "label": "Background Image",
+        "description": "Background image for the carousel slide",
         "multi": false
       },
       {
         "component": "richtext",
         "name": "text",
         "value": "",
-        "label": "Text",
+        "label": "Title & Subtitle",
+        "description": "First add a Heading 4 for the main title, then a paragraph for the subtitle",
         "valueType": "string"
       },
       {
         "component": "richtext",
         "name": "description",
         "value": "",
-        "label": "Description",
+        "label": "Body Content",
+        "description": "Add paragraphs for body text. Optionally add a link (styled as primary button) at the end",
         "valueType": "string"
       }
     ]
@@ -442,11 +429,6 @@
         "value": "",
         "label": "Tab Description",
         "valueType": "string"
-      },
-      {
-        "component": "aem-content",
-        "name": "link",
-        "label": "Fragment URL"
       }
     ]
   },

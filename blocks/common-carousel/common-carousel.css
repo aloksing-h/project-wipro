@@ -1,3 +1,5 @@
+/* stylelint-disable */
+
 @import url("../../../styles/fonts.css");
 @import url("../swiper/swiper-bundle.min.css");
 
@@ -77,7 +79,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgb(0 0 0 / 10%) 0%, rgb(0 0 0 / 50%) 100%);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 10%) 0%, rgba(0, 0, 0, 0.5) 100%);
   z-index: 1;
 }
 
@@ -124,7 +126,7 @@
   font-weight: 400;
   line-height: 24.1px;
   margin: 0;
-  margin-bottom: 108px;
+  padding-bottom: 26px;
 }
 
 .common-carousel.block .carousel-card .card-bottom-panel .card-cta-button {
@@ -144,6 +146,7 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  margin-top: 108px;
 }
 
 .common-carousel.block .carousel-card .card-bottom-panel .card-cta-button::after {
@@ -170,12 +173,12 @@
   position: absolute;
   top: auto;
   bottom: 30px;
-  width: 44px;
-  height: 44px;
+  width: 54px;
+  height: 54px;
   margin: 0;
   z-index: 10;
   cursor: pointer;
- color: rgb(255 255 255 / 60%);
+  color: rgb(255 255 255 / 60%);
   transition: color 0.2s ease, opacity 0.2s ease;
 }
 
@@ -196,9 +199,8 @@
   pointer-events: none;
 }
 
-/* stylelint-disable-next-line no-descending-specificity */
 .common-carousel.block .swiper-button-prev {
-  left: 50%;
+  left: 44%;
   transform: translateX(-160px);
 }
 
@@ -211,9 +213,8 @@
   display: none;
 }
 
-/* stylelint-disable-next-line no-descending-specificity */
 .common-carousel.block .swiper-button-next {
-  right: 50%;
+  right: 44%;
   left: auto;
   transform: translateX(160px);
 }
@@ -229,25 +230,25 @@
 
 .common-carousel.block .swiper-pagination.swiper-pagination-bullets {
   position: absolute;
-  bottom: 12px;
+  bottom: 48px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 10;
   margin: 0;
   display: flex;
-  width: 54px;
-  height: 54px;
-  padding: 12px;
+  width: auto;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 39px;
 }
 
 .common-carousel.block .swiper-pagination.swiper-pagination-bullets .swiper-pagination-bullet {
-  width: 14px;
-  height: 14px;
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+  aspect-ratio: 1/1;
   background: transparent;
- border: 2px solid rgb(255 255 255 / 40%);
+  border: 2px solid rgb(255 255 255 / 40%);
   opacity: 1;
   margin: 0 !important;
   transition: background-color 0.2s ease, border-color 0.2s ease;

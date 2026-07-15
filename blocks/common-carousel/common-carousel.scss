@@ -130,7 +130,7 @@ $accent-gradient-end: #1c7fa6;
         font-weight: 400;
         line-height: 24.1px;
         margin: 0;
-        margin-bottom: 108px;
+        padding-bottom: 26px;
       }
 
       // Rounded Capsule action button styling matching Figma gradient maps
@@ -151,6 +151,7 @@ $accent-gradient-end: #1c7fa6;
         font-style: normal;
         font-weight: 400;
         line-height: normal;
+        margin-top: 108px;
 
         &::after {
           content: '';
@@ -180,12 +181,12 @@ $accent-gradient-end: #1c7fa6;
     position: absolute;
     top: auto;
     bottom: 30px; // Centers vertically relative to the pagination dots baseline
-    width: 44px;
-    height: 44px;
+    width: 54px;
+    height: 54px;
     margin: 0;
     z-index: 10;
     cursor: pointer;
-   color: rgb(255 255 255 / 60%);
+    color: rgb(255 255 255 / 60%);
     transition: color 0.2s ease, opacity 0.2s ease;
 
     // Use default swiper icon font glyph properties with design scale adjustments
@@ -206,7 +207,7 @@ $accent-gradient-end: #1c7fa6;
 
   // Position Left Navigation Button
   .swiper-button-prev {
-    left: 50%;
+    left: 44%;
     transform: translateX(-160px); // Offsets leftward to make room for centered pagination dots
 
     .swiper-navigation-icon {
@@ -221,7 +222,7 @@ $accent-gradient-end: #1c7fa6;
 
   // Position Right Navigation Button
   .swiper-button-next {
-    right: 50%;
+    right: 44%;
     left: auto;
     transform: translateX(160px); // Offsets rightward to clear the centered pagination dots
 
@@ -238,22 +239,22 @@ $accent-gradient-end: #1c7fa6;
   // Refactored Default Swiper Pagination Layout Controls
   .swiper-pagination.swiper-pagination-bullets {
     position: absolute;
-    bottom: 12px;
+    bottom: 48px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 10;
     margin: 0;
     display: flex;
-    width: 54px;
-    height: 54px;
-    padding: 12px;
+    width: auto;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: 39px;
 
     .swiper-pagination-bullet {
-      width: 14px;
-      height: 14px;
+      width: 15px;
+      height: 15px;
+      flex-shrink: 0;
+      aspect-ratio: 1/1;
       background: transparent;
       border: 2px solid rgb(255 255 255 / 40%);
       opacity: 1;
