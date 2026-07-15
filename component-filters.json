@@ -68,6 +68,12 @@
     ]
   },
   {
+    "id": "image-text",
+    "components": [
+      "image-text-item"
+    ]
+  },
+  {
     "id": "table",
     "components": [
       "table-row"
