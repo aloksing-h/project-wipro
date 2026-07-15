@@ -429,11 +429,6 @@
         "value": "",
         "label": "Tab Description",
         "valueType": "string"
-      },
-      {
-        "component": "aem-content",
-        "name": "link",
-        "label": "Fragment URL"
       }
     ]
   },
