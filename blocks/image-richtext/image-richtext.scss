@@ -1,0 +1,181 @@
+@use "sass:map";
+@use "../../styles/common-theme/css/variables_mixins"as *;
+@use "../../styles/common-theme/css/fluid-typography"as *;
+
+.image-richtext-container.section {
+    margin: 0;
+
+    .image-richtext-wrapper {
+        max-width: 100%;
+        padding: 0;
+
+        .image-richtext {
+            &.block {
+                padding: 0;
+                margin: 0;
+            }
+
+            .image-richtext-item {
+                position: relative;
+                display: grid;
+                grid-template-columns: 1fr;
+                grid-template-rows: 1fr;
+                min-height: 500px;
+                overflow: hidden;
+
+                // Place both image and content in the same grid cell
+                >* {
+                    grid-column: 1;
+                    grid-row: 1;
+                }
+            }
+
+            .image-richtext-image {
+                width: 100%;
+                height: 100%;
+                z-index: 0;
+
+                picture {
+                    width: 100%;
+                    height: 100%;
+                    display: block;
+                }
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    display: block;
+                    object-fit: cover;
+                }
+            }
+
+            .image-richtext-content {
+                z-index: 1;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+                padding: 120px 54px 144px;
+                margin: 0 auto;
+                width: 100%;
+
+                p {
+                    color: #fff;
+                    font-family: $proximanova;
+                    font-size: 96px;
+                    font-style: normal;
+                    font-weight: 600;
+                    line-height: 96px;
+                    margin: 0;
+
+                    strong,
+                    b {
+                        font-weight: 700;
+                    }
+
+                    sup {
+                        font-size: 0.5em;
+                        vertical-align: super;
+                        font-weight: 300;
+                    }
+                }
+
+                h1,
+                h2,
+                h3,
+                h4,
+                h5,
+                h6 {
+                    color: #fff;
+                    font-size: 64px;
+                    font-weight: 300;
+                    line-height: 1.2;
+                    margin: 0;
+                    letter-spacing: -0.01em;
+
+                    strong,
+                    b {
+                        font-weight: 700;
+                        display: inline;
+                    }
+
+                    sup {
+                        font-size: 0.5em;
+                        vertical-align: super;
+                        font-weight: 300;
+                    }
+                }
+
+                a {
+                    color: inherit;
+                    text-decoration: underline;
+
+                    &:hover {
+                        opacity: 0.8;
+                    }
+                }
+            }
+
+            // Responsive
+            @media (width <=1200px) {
+                .image-richtext-item {
+                    min-height: 450px;
+                }
+
+                .image-richtext-content {
+                    padding: 100px 40px 120px;
+
+                    p,
+                    h1,
+                    h2,
+                    h3,
+                    h4,
+                    h5,
+                    h6 {
+                        font-size: 48px;
+                    }
+                }
+            }
+
+            @media (width <=768px) {
+                .image-richtext-item {
+                    min-height: 400px;
+                }
+
+                .image-richtext-content {
+                    padding: 80px 24px 100px;
+
+                    p,
+                    h1,
+                    h2,
+                    h3,
+                    h4,
+                    h5,
+                    h6 {
+                        font-size: 32px;
+                    }
+                }
+            }
+
+            @media (width <=480px) {
+                .image-richtext-item {
+                    min-height: 300px;
+                }
+
+                .image-richtext-content {
+                    padding: 60px 20px 80px;
+
+                    p,
+                    h1,
+                    h2,
+                    h3,
+                    h4,
+                    h5,
+                    h6 {
+                        font-size: 24px;
+                    }
+                }
+            }
+        }
+    }
+}
