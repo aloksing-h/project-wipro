@@ -1,0 +1,194 @@
+/* stylelint-disable */
+@import "../../../styles/fonts.css";
+
+.image-richtext-container.section {
+  margin: 0;
+}
+
+.image-richtext-container.section .image-richtext-wrapper {
+  max-width: 100%;
+  padding: 0;
+}
+
+.image-richtext-container.section .image-richtext-wrapper .image-richtext.block {
+  padding: 0;
+  margin: 0;
+}
+
+.image-richtext-container.section .image-richtext-wrapper .image-richtext .image-richtext-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  min-height: 500px;
+  overflow: hidden;
+}
+
+.image-richtext-container.section .image-richtext-wrapper .image-richtext .image-richtext-item>* {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.image-richtext-container.section .image-richtext-wrapper .image-richtext .image-richtext-image {
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.image-richtext-container.section .image-richtext-wrapper .image-richtext .image-richtext-image picture {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.image-richtext-container.section .image-richtext-wrapper .image-richtext .image-richtext-image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
+.image-richtext-container.section .image-richtext-wrapper .image-richtext .image-richtext-content {
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 120px 54px 144px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.image-richtext-container.section .image-richtext-wrapper .image-richtext .image-richtext-content p {
+  color: #fff;
+  font-family: "Proxima Nova", sans-serif;
+  font-size: 96px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 96px;
+  margin: 0;
+}
+
+.image-richtext-container.section .image-richtext-wrapper .image-richtext .image-richtext-content p strong,
+.image-richtext-container.section .image-richtext-wrapper .image-richtext .image-richtext-content p b {
+  font-weight: 700;
+}
+
+.image-richtext-container.section .image-richtext-wrapper .image-richtext .image-richtext-content p sup {
+  font-size: 0.5em;
+  vertical-align: super;
+  font-weight: 300;
+}
+
+.image-richtext-container.section .image-richtext-wrapper .image-richtext .image-richtext-content h1,
+.image-richtext-container.section .image-richtext-wrapper .image-richtext .image-richtext-content h2,
+.image-richtext-container.section .image-richtext-wrapper .image-richtext .image-richtext-content h3,
+.image-richtext-container.section .image-richtext-wrapper .image-richtext .image-richtext-content h4,
+.image-richtext-container.section .image-richtext-wrapper .image-richtext .image-richtext-content h5,
+.image-richtext-container.section .image-richtext-wrapper .image-richtext .image-richtext-content h6 {
+  color: #fff;
+  font-size: 64px;
+  font-weight: 300;
+  line-height: 1.2;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.image-richtext-container.section .image-richtext-wrapper .image-richtext .image-richtext-content h1 strong,
+.image-richtext-container.section .image-richtext-wrapper .image-richtext .image-richtext-content h1 b,
+.image-richtext-container.section .image-richtext-wrapper .image-richtext .image-richtext-content h2 strong,
+.image-richtext-container.section .image-richtext-wrapper .image-richtext .image-richtext-content h2 b,
+.image-richtext-container.section .image-richtext-wrapper .image-richtext .image-richtext-content h3 strong,
+.image-richtext-container.section .image-richtext-wrapper .image-richtext .image-richtext-content h3 b,
+.image-richtext-container.section .image-richtext-wrapper .image-richtext .image-richtext-content h4 strong,
+.image-richtext-container.section .image-richtext-wrapper .image-richtext .image-richtext-content h4 b,
+.image-richtext-container.section .image-richtext-wrapper .image-richtext .image-richtext-content h5 strong,
+.image-richtext-container.section .image-richtext-wrapper .image-richtext .image-richtext-content h5 b,
+.image-richtext-container.section .image-richtext-wrapper .image-richtext .image-richtext-content h6 strong,
+.image-richtext-container.section .image-richtext-wrapper .image-richtext .image-richtext-content h6 b {
+  font-weight: 700;
+  display: inline;
+}
+
+.image-richtext-container.section .image-richtext-wrapper .image-richtext .image-richtext-content h1 sup,
+.image-richtext-container.section .image-richtext-wrapper .image-richtext .image-richtext-content h2 sup,
+.image-richtext-container.section .image-richtext-wrapper .image-richtext .image-richtext-content h3 sup,
+.image-richtext-container.section .image-richtext-wrapper .image-richtext .image-richtext-content h4 sup,
+.image-richtext-container.section .image-richtext-wrapper .image-richtext .image-richtext-content h5 sup,
+.image-richtext-container.section .image-richtext-wrapper .image-richtext .image-richtext-content h6 sup {
+  font-size: 0.5em;
+  vertical-align: super;
+  font-weight: 300;
+}
+
+.image-richtext-container.section .image-richtext-wrapper .image-richtext .image-richtext-content a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.image-richtext-container.section .image-richtext-wrapper .image-richtext .image-richtext-content a:hover {
+  opacity: 0.8;
+}
+
+@media (width <=1200px) {
+  .image-richtext-container.section .image-richtext-wrapper .image-richtext .image-richtext-item {
+    min-height: 450px;
+  }
+
+  .image-richtext-container.section .image-richtext-wrapper .image-richtext .image-richtext-content {
+    padding: 100px 40px 120px;
+  }
+
+  .image-richtext-container.section .image-richtext-wrapper .image-richtext .image-richtext-content p,
+  .image-richtext-container.section .image-richtext-wrapper .image-richtext .image-richtext-content h1,
+  .image-richtext-container.section .image-richtext-wrapper .image-richtext .image-richtext-content h2,
+  .image-richtext-container.section .image-richtext-wrapper .image-richtext .image-richtext-content h3,
+  .image-richtext-container.section .image-richtext-wrapper .image-richtext .image-richtext-content h4,
+  .image-richtext-container.section .image-richtext-wrapper .image-richtext .image-richtext-content h5,
+  .image-richtext-container.section .image-richtext-wrapper .image-richtext .image-richtext-content h6 {
+    font-size: 48px;
+  }
+}
+
+@media (width <=768px) {
+  .image-richtext-container.section .image-richtext-wrapper .image-richtext .image-richtext-item {
+    min-height: 400px;
+  }
+
+  .image-richtext-container.section .image-richtext-wrapper .image-richtext .image-richtext-content {
+    padding: 80px 24px 100px;
+  }
+
+  .image-richtext-container.section .image-richtext-wrapper .image-richtext .image-richtext-content p,
+  .image-richtext-container.section .image-richtext-wrapper .image-richtext .image-richtext-content h1,
+  .image-richtext-container.section .image-richtext-wrapper .image-richtext .image-richtext-content h2,
+  .image-richtext-container.section .image-richtext-wrapper .image-richtext .image-richtext-content h3,
+  .image-richtext-container.section .image-richtext-wrapper .image-richtext .image-richtext-content h4,
+  .image-richtext-container.section .image-richtext-wrapper .image-richtext .image-richtext-content h5,
+  .image-richtext-container.section .image-richtext-wrapper .image-richtext .image-richtext-content h6 {
+    font-size: 32px;
+  }
+}
+
+@media (width <=480px) {
+  .image-richtext-container.section .image-richtext-wrapper .image-richtext .image-richtext-item {
+    min-height: 300px;
+  }
+
+  .image-richtext-container.section .image-richtext-wrapper .image-richtext .image-richtext-content {
+    padding: 60px 20px 80px;
+  }
+
+  .image-richtext-container.section .image-richtext-wrapper .image-richtext .image-richtext-content p,
+  .image-richtext-container.section .image-richtext-wrapper .image-richtext .image-richtext-content h1,
+  .image-richtext-container.section .image-richtext-wrapper .image-richtext .image-richtext-content h2,
+  .image-richtext-container.section .image-richtext-wrapper .image-richtext .image-richtext-content h3,
+  .image-richtext-container.section .image-richtext-wrapper .image-richtext .image-richtext-content h4,
+  .image-richtext-container.section .image-richtext-wrapper .image-richtext .image-richtext-content h5,
+  .image-richtext-container.section .image-richtext-wrapper .image-richtext .image-richtext-content h6 {
+    font-size: 24px;
+  }
+}
+
+/*# sourceMappingURL=image-richtext.css.map */

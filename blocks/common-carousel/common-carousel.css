@@ -1,7 +1,6 @@
 /* stylelint-disable */
-
-@import url("../../../styles/fonts.css");
-@import url("../swiper/swiper-bundle.min.css");
+@import "../../../styles/fonts.css";
+@import "../swiper/swiper-bundle.min.css";
 
 .section.common-carousel-container {
   background-color: #000;
@@ -37,13 +36,13 @@
   gap: 76px;
 }
 
-@media (width <= 1025px) {
+@media (max-width: 1025px) {
   .common-carousel.block .swiper-wrapper {
     gap: 10px;
   }
 }
 
-@media (width <= 768px) {
+@media (max-width: 768px) {
   .common-carousel.block .swiper-wrapper {
     gap: 0;
   }
@@ -71,6 +70,7 @@
 .common-carousel.block .carousel-card .card-top-panel img {
   width: 100%;
   height: 100%;
+  -o-object-fit: cover;
   object-fit: cover;
   display: block;
 }
@@ -79,7 +79,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 10%) 0%, rgba(0, 0, 0, 0.5) 100%);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.5) 100%);
   z-index: 1;
 }
 
@@ -178,7 +178,7 @@
   margin: 0;
   z-index: 10;
   cursor: pointer;
-  color: rgb(255 255 255 / 60%);
+  color: rgba(255, 255, 255, 0.6);
   transition: color 0.2s ease, opacity 0.2s ease;
 }
 
@@ -204,12 +204,12 @@
   transform: translateX(-160px);
 }
 
-.common-carousel.block .swiper-button-prev .swiper-navigation-icon {
+.common-carousel.block .swiper-button-prev svg.swiper-navigation-icon {
   background: url("../../icons/swiper-arrow-left.svg") center/contain no-repeat;
-  transform: rotate(0);
+  transform: rotate(0deg);
 }
 
-.common-carousel.block .swiper-button-prev .swiper-navigation-icon path {
+.common-carousel.block .swiper-button-prev svg.swiper-navigation-icon path {
   display: none;
 }
 
@@ -248,7 +248,7 @@
   flex-shrink: 0;
   aspect-ratio: 1/1;
   background: transparent;
-  border: 2px solid rgb(255 255 255 / 40%);
+  border: 2px solid rgba(255, 255, 255, 0.4);
   opacity: 1;
   margin: 0 !important;
   transition: background-color 0.2s ease, border-color 0.2s ease;

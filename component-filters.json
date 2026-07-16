@@ -16,16 +16,17 @@
       "cards",
       "columns",
       "fragment",
-      "accordion",
-      "carousel",
-      "common-carousel",
       "embed",
       "form",
       "quote",
       "search",
       "table",
       "tabs",
-      "video"
+      "video",
+      "accordion",
+      "carousel",
+      "common-carousel",
+      "image-richtext"
     ]
   },
   {
@@ -65,6 +66,12 @@
     "id": "common-carousel",
     "components": [
       "common-carousel-item"
+    ]
+  },
+  {
+    "id": "image-richtext",
+    "components": [
+      "image-richtext-item"
     ]
   },
   {

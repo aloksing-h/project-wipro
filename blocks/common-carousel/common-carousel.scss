@@ -209,10 +209,11 @@ $accent-gradient-end: #1c7fa6;
   .swiper-button-prev {
     left: 44%;
     transform: translateX(-160px); // Offsets leftward to make room for centered pagination dots
+    
 
-    .swiper-navigation-icon {
+    svg.swiper-navigation-icon {
       background: url('../../icons/swiper-arrow-left.svg') center / contain no-repeat;
-      transform: rotate(0);
+      transform: rotate(0deg);
 
       path {
         display: none;

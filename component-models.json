@@ -329,6 +329,35 @@
     ]
   },
   {
+    "id": "image-richtext-item",
+    "fields": [
+      {
+        "component": "reference",
+        "name": "image",
+        "label": "Icon/Badge Image",
+        "description": "Small icon or badge displayed in top left corner",
+        "valueType": "string",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "name": "imageAlt",
+        "label": "Alt Text",
+        "description": "Alternative text for the icon",
+        "valueType": "string",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "name": "content",
+        "label": "Hero Text Content",
+        "description": "Large hero text displayed on gradient background. Use headings or paragraphs. Bold important words with strong tags.",
+        "value": "",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
     "id": "quote",
     "fields": [
       {
