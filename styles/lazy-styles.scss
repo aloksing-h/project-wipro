@@ -87,8 +87,9 @@
 
 .overflow-tabs.section {
     background-color: $neutrals-black;
-    position: sticky;
-    top: var(--nav-height, 64px);
+    
+    // position: sticky;
+    // top: var(--nav-height, 64px);
     z-index: 10;
     margin: 0;
 

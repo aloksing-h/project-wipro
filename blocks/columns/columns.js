@@ -1,3 +1,5 @@
+import dataMapWpObj from '../../scripts/constant.js';
+
 export default function decorate(block) {
   const cols = [...block.firstElementChild.children];
   block.classList.add(`columns-${cols.length}-cols`);
@@ -15,4 +17,15 @@ export default function decorate(block) {
       }
     });
   });
+  if (dataMapWpObj?.addIndexed) {
+    dataMapWpObj.CLASS_PREFIXES = [
+      'columns-cont',
+      'columns-sec',
+      'columns-sub',
+      'columns-inner-text',
+      'columns-list',
+      'columns-list-content',
+    ];
+    dataMapWpObj.addIndexed(block);
+  }
 }
