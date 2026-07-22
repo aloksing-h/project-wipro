@@ -2,388 +2,397 @@
 @use "../../styles/common-theme/css/variables_mixins"as *;
 @use "../../styles/common-theme/css/fluid-typography"as *;
 
-// Block specific design tokens mapping the Figma dark theme gradients
+// Block specific design tokens mapping the Figma dark theme elements
 $section-bg: #fff;
-$card-base-gradient: linear-gradient(135deg, #1b1e42 0%, #0d0f26 100%);
-$card-tall-gradient-1: linear-gradient(145deg, #1f4277 0%, #0b0e28 100%);
-$card-tall-gradient-2: linear-gradient(145deg, #24225e 0%, #0c0a22 100%);
-$card-tall-gradient-3: linear-gradient(145deg, #281c48 0%, #0e0a24 100%);
 $text-light: #fff;
 $text-muted-light: rgb(255 255 255 / 80%);
 $bullet-accent: #33a3ee;
 
-.section.columns-container {
+.columns-container.ai-solutions {
   background-color: $section-bg;
-  padding: 80px 24px;
+  padding: 60px 24px;
   font-family: $proximanova;
 
   // Intro header positioning rules matching split layout presentation
   .default-content-wrapper {
-    max-width: 1200px;
     margin: 0 auto 56px;
     display: flex;
     flex-direction: column;
     gap: 20px;
 
-    @media (width >=900px) {
+    @media (width >= 900px) {
       flex-direction: row;
-      justify-content: space-between;
+      justify-content: flex-start;
       align-items: flex-start;
+      gap: 154px;
+      margin-bottom: 108px;
     }
 
-    h2 {
-      font-size: 48px;
-      font-weight: map.get($font-weights, bold);
-      color: $neutrals-black;
-      margin: 0;
-      line-height: 1.1;
-      flex: 1;
-    }
+    .columns-header-wrapper {
+      h2 {
+        color: $neutrals-black;
+        font-size: 96px;
+        font-style: normal;
+        font-weight: map.get($font-weights, light);
+        line-height: normal;
+        margin: 0 0 24px;
+        flex: 1;
+      }
 
-    h3 {
-      font-size: 28px;
-      font-weight: map.get($font-weights, semibold);
-      color: $neutrals-black;
-      margin: 0;
-      line-height: 1.2;
-      flex: 1;
+      h3 {
+        font-family: $proximanova;
+        font-size: 40px;
+        font-style: normal;
+        font-weight: map.get($font-weights, semibold);
+        line-height: 44px;
+        margin: 0;
+        flex: 1;
 
-      br {
-        display: none;
+        br {
+          display: none;
 
-        @media (width >=600px) {
-          display: inline;
+          @media (width >= 600px) {
+            display: inline;
+          }
         }
       }
     }
 
     p {
-      font-size: 16px;
-      line-height: 1.5;
-      color: $neutrals-800;
+      color: #000;
+      font-family: $proximanova;
+      font-size: 24px;
+      line-height: normal;
+      font-weight: map.get($font-weights, regular);
       margin: 0;
-      flex: 1.5;
-      text-wrap: balance;
-    }
-  }
-}
-
-.columns-wrapper {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.columns.block.columns-3-cols {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-
-  // Strip nested row grouping boundaries to let all cards float inside the primary grid
-  .columns-cont1,
-  .columns-cont2,
-  .columns-cont3,
-  .columns-cont4 {
-    display: contents;
-  }
-
-  // Base layout styles for all cards
-  .comlist[class*="columns-sec"] {
-    background: $card-base-gradient;
-    border-radius: 20px;
-    padding: 40px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s ease;
-    position: relative;
-    overflow: hidden;
-
-    &:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 32px rgb(13 15 38 / 15%);
+      flex: 0.65;
     }
   }
 
-  // -------------------------------------------------------------------
-  // CARD METRICS: DEFAULT / SHORT VARIANTS
-  // -------------------------------------------------------------------
-  .columns-sub1 {
-    font-size: 24px;
-    font-weight: map.get($font-weights, semibold);
-    color: $text-light;
-    margin: 0 0 40px;
-    line-height: 1.3;
-  }
+  .columns-wrapper {
+    .ai-solutions-content {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 54px;
 
-  .columns-sub2 {
-    margin: 0;
-
-    a.columns-inner-text1 {
-      font-size: 14px;
-      font-weight: map.get($font-weights, medium);
-      color: $text-light;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      transition: opacity 0.2s ease;
-
-      &::after {
-        content: '→';
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 20px;
-        height: 20px;
-        border: 1px solid rgb(255 255 255 / 60%);
-        border-radius: 50%;
-        font-size: 11px;
-        transition: transform 0.2s ease, border-color 0.2s ease;
+      @include media(mobile) {
+        // Gracefully triggers standard layout transformation rules on small viewports
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
       }
 
-      &:hover {
-        opacity: 0.9;
-
-        &::after {
-          transform: translateX(3px);
-          border-color: $text-light;
-        }
+      // Flatten row configurations to expose child nodes straight to the grid processor
+      .columns-cont1,
+      .columns-cont2,
+      .columns-cont3,
+      .columns-cont4 {
+        display: contents;
       }
-    }
-  }
 
-  // -------------------------------------------------------------------
-  // CARD METRICS: TALL VARIANTS SPECIFIC OVERRIDES
-  // -------------------------------------------------------------------
-  .columns-cont2 .columns-sec1,
-  .columns-cont3 .columns-sec3,
-  .columns-cont4 .columns-sec2 {
-    justify-content: flex-start;
-    padding: 56px 40px;
-
-    // Small category tracker header
-    h2.columns-sub1 {
-      font-size: 14px;
-      font-weight: map.get($font-weights, semibold);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: $text-muted-light;
-      margin: 0 0 24px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-
-      &::before {
-        content: '';
-        display: inline-block;
-        width: 6px;
-        height: 6px;
-        background-color: $bullet-accent;
-        border-radius: 1px;
-      }
-    }
-
-    // Main action title
-    h3.columns-sub2 {
-      font-size: 32px;
-      font-weight: map.get($font-weights, bold);
-      color: $text-light;
-      margin: 0 0 48px;
-      line-height: 1.2;
-    }
-
-    // High impact subheadline statement
-    h4.columns-sub3 {
-      font-size: 28px;
-      font-weight: map.get($font-weights, light);
-      color: $text-light;
-      margin: 0 0 20px;
-      line-height: 1.3;
-
-      strong {
-        font-weight: map.get($font-weights, bold);
-        text-decoration: underline;
-        text-decoration-color: rgb(255 255 255 / 40%);
-        text-underline-offset: 6px;
-      }
-    }
-
-    // Informative descriptive body copy paragraph
-    p.columns-sub4 {
-      font-size: 15px;
-      line-height: 1.6;
-      color: $text-muted-light;
-      margin: 0 0 54px;
-    }
-
-    // White solid capsule action buttons transformation
-    p.columns-sub5 {
-      margin: auto 0 0;
-      width: 100%;
-
-      a.columns-inner-text1 {
-        display: inline-flex;
-        align-items: center;
-        justify-content: space-between;
-        background-color: $primary-white;
-        color: $neutrals-black;
-        padding: 14px 28px;
-        border-radius: 30px;
-        font-size: 15px;
-        font-weight: map.get($font-weights, semibold);
-        text-decoration: none;
-        width: 100%;
-        max-width: 220px;
+      // -------------------------------------------------------------------
+      // BASE NORMAL CARDS CONFIGURATIONS
+      // -------------------------------------------------------------------
+      .comlist[class*="columns-sec"] {
+        padding: 40px;
         box-sizing: border-box;
-        transition: background-color 0.2s ease, transform 0.2s ease;
+        display: flex;
+        flex-direction: column;
 
-        &::after {
-          content: '→';
-          font-size: 16px;
-          border: none;
-          width: auto;
+        // justify-content: space-between;
+        transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        border-radius: 27px; // Enforces the custom card radius specification
+        background: linear-gradient(24deg, #000 -2.77%, #1b0d2a 48.62%, #365494 100%); // Design gradient mapping
+        // height: 216px; 
+
+        @media (width <= 899px) {
           height: auto;
-          transform: none;
+          min-height: auto;
         }
 
         &:hover {
-          background-color: rgb(255 255 255 / 95%);
-          transform: translateX(2px);
+          transform: translateY(-4px);
+          box-shadow: 0 12px 32px rgb(13 15 38 / 15%);
+        }
+      }
 
+      // Short Cards Text Presentation Formats
+      .columns-sub1 {
+        font-size: 24px;
+        font-weight: map.get($font-weights, semibold);
+        color: $text-light;
+        margin: 0 0 40px;
+        line-height: 1.3;
+      }
+
+      .columns-sub2 {
+        margin: 0;
+
+        a.columns-inner-text1 {
+          font-size: 14px;
+          font-weight: map.get($font-weights, medium);
+          color: $text-light;
+          text-decoration: none;
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          transition: opacity 0.2s ease;
+
+          // Stylelint Compliant space-separated color function definitions
           &::after {
-            transform: translateX(4px);
+            content: '→';
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 20px;
+            height: 20px;
+            border: 1px solid rgb(255 255 255 / 60%);
+            border-radius: 50%;
+            font-size: 11px;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+          }
+
+          &:hover {
+            opacity: 0.9;
+
+            &::after {
+              transform: translateX(3px);
+              border-color: $text-light;
+            }
+          }
+        }
+      }
+
+      // -------------------------------------------------------------------
+      // TALL IMAGE CARDS - HEIGHT MATRIX & VISUAL ISOLATIONS
+      // -------------------------------------------------------------------
+      .columns-cont2 .columns-sec1,
+      .columns-cont3 .columns-sec3,
+      .columns-cont4 .columns-sec2 {
+        justify-content: flex-start;
+        padding: 56px 40px;
+        height: 756px; // Calibrates tall columns path directly to Figma metrics
+        background: none; // CRITICAL: Drops underlying colors so artwork assets display perfectly cleanly
+
+        @media (width <= 899px) {
+          height: auto;
+          min-height: 650px;
+        }
+
+        // Pull copy content cleanly above the absolute background media frames
+        h2.columns-sub1,
+        h3.columns-sub2,
+        h4.columns-sub3,
+        p.columns-sub4,
+        p.columns-sub5 {
+          position: relative;
+          z-index: 3;
+        }
+
+        // Small section tracker title
+        h2.columns-sub1 {
+          font-size: 14px;
+          font-weight: map.get($font-weights, semibold);
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+          color: $text-muted-light;
+          margin: 0 0 24px;
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+
+          &::before {
+            content: '';
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background-color: $bullet-accent;
+            border-radius: 1px;
+          }
+        }
+
+        // Main action title
+        h3.columns-sub2 {
+          font-size: 32px;
+          font-weight: map.get($font-weights, bold);
+          color: $text-light;
+          margin: 0 0 48px;
+          line-height: 1.2;
+        }
+
+        // High impact subheadline statement
+        h4.columns-sub3 {
+          font-size: 28px;
+          font-weight: map.get($font-weights, light);
+          color: $text-light;
+          margin: 0 0 20px;
+          line-height: 1.3;
+
+          strong {
+            font-weight: map.get($font-weights, bold);
+            text-decoration: underline;
+            text-decoration-color: rgb(255 255 255 / 40%);
+            text-underline-offset: 6px;
+          }
+        }
+
+        // Informative descriptive body copy paragraph
+        p.columns-sub4 {
+          font-size: 15px;
+          line-height: 1.6;
+          color: $text-muted-light;
+          margin: 0 0 54px;
+        }
+
+        // Transmute action links into white pill containers
+        p.columns-sub5 {
+          margin: auto 0 0;
+          width: 100%;
+
+          a.columns-inner-text1 {
+            display: inline-flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: $primary-white;
+            color: $neutrals-black;
+            padding: 14px 28px;
+            border-radius: 30px;
+            font-size: 15px;
+            font-weight: map.get($font-weights, semibold);
+            text-decoration: none;
+            width: 100%;
+            max-width: 240px;
+            box-sizing: border-box;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+
+            &::after {
+              content: '→';
+              font-size: 16px;
+              border: none;
+              width: auto;
+              height: auto;
+              transform: none;
+              display: inline-block;
+              background: none;
+            }
+
+            &:hover {
+              background-color: rgb(255 255 255 / 95%);
+              transform: translateX(2px);
+
+              &::after {
+                transform: translateX(4px);
+              }
+            }
+          }
+        }
+
+        // Layer the trailing authored image paragraph container as full bleed card layout background
+        p.columns-sub6 {
+          position: absolute;
+          inset: 0;
+          margin: 0;
+          padding: 0;
+          z-index: 1;
+          width: 100%;
+          height: 100%;
+
+          picture,
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+          }
+
+          // STYLELINT FIX: Uses space-separated functional color strings with clean percentage values
+          &::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgb(0 0 0 / 15%) 0%, rgb(0 0 0 / 75%) 100%);
+            z-index: 2;
+          }
+        }
+      }
+
+      // -------------------------------------------------------------------
+      // DESKTOP GRID COORDINATES ENGINE MATRIX MAP
+      // -------------------------------------------------------------------
+      @media (width >= 900px) {
+        .columns-cont1 {
+          .columns-sec1 {
+            grid-column: 1;
+            grid-row: 1;
+          }
+
+          .columns-sec2 {
+            grid-column: 2;
+            grid-row: 1;
+          }
+
+          .columns-sec3 {
+            grid-column: 3;
+            grid-row: 1;
+          }
+        }
+
+        // Row 2-3 tracking setups (Houses Left Image Card)
+        .columns-cont2 {
+          .columns-sec1 {
+            grid-column: 1;
+            grid-row: 2 / span 2;
+          }
+
+          .columns-sec2 {
+            grid-column: 2;
+            grid-row: 2;
+          }
+
+          .columns-sec3 {
+            grid-column: 3;
+            grid-row: 2;
+          }
+        }
+
+        // Row 3-4 tracking setups (Houses Right Image Card)
+        .columns-cont3 {
+          .columns-sec1 {
+            grid-column: 1;
+            grid-row: 4;
+          }
+
+          .columns-sec2 {
+            grid-column: 2;
+            grid-row: 3;
+          }
+
+          .columns-sec3 {
+            grid-column: 3;
+            grid-row: 3 / span 2;
+          }
+        }
+
+        // Row 4-5 tracking setups (Houses Center Image Card)
+        .columns-cont4 {
+          .columns-sec1 {
+            grid-column: 1;
+            grid-row: 5;
+          }
+
+          .columns-sec2 {
+            grid-column: 2;
+            grid-row: 4 / span 2;
+          }
+
+          .columns-sec3 {
+            grid-column: 3;
+            grid-row: 5;
           }
         }
       }
     }
-  }
-
-  // Set distinct gradient visuals for the tall panels to reflect the Figma theme shifts
-  .columns-cont2 .columns-sec1 {
-    background: $card-tall-gradient-1;
-  }
-
-  .columns-cont3 .columns-sec3 {
-    background: $card-tall-gradient-2;
-  }
-
-  .columns-cont4 .columns-sec2 {
-    background: $card-tall-gradient-3;
-  }
-
-  // -------------------------------------------------------------------
-  // DESKTOP GRID COORDINATES CONFIGURATION MATRIX
-  // -------------------------------------------------------------------
-  @media (width >=900px) {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 32px;
-
-    // Row 1 mapping
-    .columns-cont1 {
-      .columns-sec1 {
-        grid-column: 1;
-        grid-row: 1;
-      }
-
-      .columns-sec2 {
-        grid-column: 2;
-        grid-row: 1;
-      }
-
-      .columns-sec3 {
-        grid-column: 3;
-        grid-row: 1;
-      }
-    }
-
-    // Row 2-3 mapping (Includes Left Tall Module)
-    .columns-cont2 {
-      .columns-sec1 {
-        grid-column: 1;
-        grid-row: 2 / span 2;
-      }
-
-      .columns-sec2 {
-        grid-column: 2;
-        grid-row: 2;
-      }
-
-      .columns-sec3 {
-        grid-column: 3;
-        grid-row: 2;
-      }
-    }
-
-    // Row 3-4 mapping (Includes Right Tall Module)
-    .columns-cont3 {
-      .columns-sec1 {
-        grid-column: 1;
-        grid-row: 4;
-      }
-
-      .columns-sec2 {
-        grid-column: 2;
-        grid-row: 3;
-      }
-
-      .columns-sec3 {
-        grid-column: 3;
-        grid-row: 3 / span 2;
-      }
-    }
-
-    // Row 4-5 mapping (Includes Center Tall Module)
-    .columns-cont4 {
-      .columns-sec1 {
-        grid-column: 1;
-        grid-row: 5;
-      }
-
-      .columns-sec2 {
-        grid-column: 2;
-        grid-row: 4 / span 2;
-      }
-
-      .columns-sec3 {
-        grid-column: 3;
-        grid-row: 5;
-      }
-    }
-  }
-}
-
-.columns>div {
-  display: flex;
-  flex-direction: column;
-}
-
-.columns img {
-  width: 100%;
-}
-
-.columns>div>div {
-  order: 1;
-}
-
-.columns>div>.columns-img-col {
-  order: 0;
-}
-
-.columns>div>.columns-img-col img {
-  display: block;
-}
-
-@media (width >=900px) {
-  .columns>div {
-    align-items: center;
-    flex-direction: unset;
-    gap: 24px;
-  }
-
-  .columns>div>div {
-    flex: 1;
-    order: unset;
   }
 }
