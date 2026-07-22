@@ -1,0 +1,321 @@
+@use "sass:map";
+@use "../../styles/common-theme/css/variables_mixins" as *;
+@use "../../styles/common-theme/css/fluid-typography" as *;
+
+// Floating Header Design Tokens
+$header-bg: #fff;
+$header-radius: 12px;
+$header-shadow: 0 8px 32px rgb(0 0 0 / 12%);
+$nav-text-color: #333;
+$nav-active-bg: #e8e8e8;
+$cta-gradient: linear-gradient(90deg, #7b1fa2 0%, #d81b60 100%);
+
+header {
+  .nav-wrapper {
+    position: fixed;
+    top: 20px;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    width: 100%;
+    padding: 0 24px;
+    box-sizing: border-box;
+
+    @media (width <= 899px) {
+      top: 10px;
+      padding: 0 16px;
+    }
+  }
+
+  nav#nav {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1360px;
+    margin: 0 auto;
+    height: 64px;
+    padding: 8px 16px 8px 24px;
+    background-color: $header-bg;
+    border-radius: $header-radius;
+    box-shadow: $header-shadow;
+    font-family: $proximanova;
+    transition: all 0.3s ease;
+
+    @media (width <= 899px) {
+      display: grid;
+      grid-template: 'hamburger brand tools' 48px 'sections sections sections' auto / auto 1fr auto;
+      gap: 12px;
+      height: auto;
+
+      &[aria-expanded='true'] {
+        grid-template: 'hamburger brand' 48px 'sections sections' auto 'tools tools' auto / auto 1fr;
+      }
+    }
+
+    p {
+      margin: 0;
+      line-height: 1;
+    }
+
+    a:any-link {
+      color: currentcolor;
+      text-decoration: none;
+    }
+
+    /* -------------------------------------------------------------------
+     * BRAND & DEFAULT SEARCH BLOCK INTEGRATION (.search-wrapper)
+     * ------------------------------------------------------------------- */
+    .nav-brand {
+      grid-area: brand;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+
+      .navbrand-cont1 {
+        display: flex;
+        align-items: center;
+
+        .navbrand-sec1 {
+          display: flex;
+          align-items: center;
+
+          img {
+            width: 110px;
+            height: auto;
+            display: block;
+          }
+        }
+      }
+
+      // Inline Search Block Layout
+      .search-wrapper,
+      .navbrand-cont2 {
+        display: flex;
+        align-items: center;
+
+        .search.block {
+          position: relative;
+          display: flex;
+          align-items: center;
+
+          .search-box {
+            display: flex;
+            align-items: center;
+            background-color: transparent;
+
+            // border: 1px solid $neutrals-300;
+            // border-radius: 20px;
+            border: unset;
+            border-radius: unset;
+            padding: 6px 14px;
+            gap: 8px;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+            // &:focus-within {
+            //   border-color: $blue-1-600;
+            //   background-color: $neutrals-white;
+            //   box-shadow: 0 0 0 2px rgb(56 42 215 / 15%);
+            // }
+
+            .icon-search {
+              display: flex;
+              align-items: center;
+
+              img {
+                width: 16px;
+                height: 16px;
+                display: block;
+              }
+            }
+
+            input.search-input {
+              border: none;
+              background: transparent;
+              outline: none;
+              font-family: $proximanova;
+              font-size: 14px;
+              color: $neutrals-black;
+              width: 180px;
+
+              &::placeholder {
+                color: $neutrals-600;
+              }
+
+              @media (width <= 899px) {
+                width: 100px;
+              }
+            }
+          }
+
+          // Search Dropdown Popover Results
+          .search-results {
+            position: absolute;
+            top: calc(100% + 12px);
+            left: 0;
+            right: 0;
+            min-width: 280px;
+            background: $neutrals-white;
+            border-radius: 8px;
+            box-shadow: 0 8px 24px rgb(0 0 0 / 15%);
+            list-style: none;
+            padding: 8px 0;
+            margin: 0;
+            display: none;
+            z-index: 100;
+
+            &:not(:empty) {
+              display: block;
+            }
+
+            li {
+              padding: 10px 16px;
+              font-size: 14px;
+              color: $neutrals-800;
+              cursor: pointer;
+
+              &:hover {
+                background-color: $neutrals-100;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    /* -------------------------------------------------------------------
+     * NAVIGATION LINKS SECTION
+     * ------------------------------------------------------------------- */
+    .nav-sections {
+      grid-area: sections;
+
+      @media (width <= 899px) {
+        display: none;
+
+        ul {
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+          padding: 16px 0;
+          margin: 0;
+          list-style: none;
+        }
+      }
+
+      @media (width >= 900px) {
+        display: block;
+
+        ul {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          margin: 0;
+          padding: 0;
+          list-style: none;
+
+          > li {
+            font-size: 14px;
+            font-weight: map.get($font-weights, medium);
+            color: $nav-text-color;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: background-color 0.2s ease, color 0.2s ease;
+
+            &:hover,
+            &[aria-expanded='true'],
+            &.active {
+              background-color: $nav-active-bg;
+              color: $neutrals-black;
+            }
+          }
+        }
+      }
+    }
+
+    &[aria-expanded='true'] .nav-sections {
+      display: block;
+    }
+
+    /* -------------------------------------------------------------------
+     * ACTION BUTTON (TOOLS)
+     * ------------------------------------------------------------------- */
+    .nav-tools {
+      grid-area: tools;
+
+      p {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: $cta-gradient;
+        color: $neutrals-white;
+        font-size: 14px;
+        font-weight: map.get($font-weights, semibold);
+        padding: 10px 24px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: opacity 0.2s ease, transform 0.2s ease;
+
+        &:hover {
+          opacity: 0.92;
+          transform: translateY(-1px);
+        }
+      }
+    }
+
+    /* -------------------------------------------------------------------
+     * HAMBURGER MENU (MOBILE)
+     * ------------------------------------------------------------------- */
+    .nav-hamburger {
+      grid-area: hamburger;
+
+      @media (width >= 900px) {
+        display: none;
+      }
+
+      button {
+        background: transparent;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+
+        .nav-hamburger-icon {
+          display: block;
+          position: relative;
+          width: 20px;
+          height: 2px;
+          background: $neutrals-black;
+
+          &::before,
+          &::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            width: 20px;
+            height: 2px;
+            background: $neutrals-black;
+            transition: transform 0.2s ease, top 0.2s ease;
+          }
+
+          &::before { top: -6px; }
+          &::after { top: 6px; }
+        }
+      }
+    }
+
+    &[aria-expanded='true'] .nav-hamburger-icon {
+      background: transparent !important;
+
+      &::before {
+        top: 0 !important;
+        transform: rotate(45deg);
+      }
+
+      &::after {
+        top: 0 !important;
+        transform: rotate(-45deg);
+      }
+    }
+  }
+}
